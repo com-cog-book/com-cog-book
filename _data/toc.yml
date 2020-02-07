@@ -14,9 +14,12 @@
 # - divider: true  # Will insert a divider in the sidebar
 # - header: My Header  # Will insert a header with no link in the sidebar
 
-- header: CMG Book
+- header: CMC Book
 
 - url: /intro
+  not_numbered: true
+  
+- url: /book-usage
   not_numbered: true
 
 - url: /table-contents
