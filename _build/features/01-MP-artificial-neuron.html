@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/02-rossenblatt-perceptron.html
 suffix: .ipynb
-search: neuron inputs threshold function weights pitts mcculloch step yes table model neurons sum output vector movie not turing center neural artificial excitatory activation value only behavior fire watch cell inhibitory compute truth l jackson tarantino need information same biological must input fires logical where since samuel quentin both matrix computation machines mathematical tape figure functions org cognition firing boolean binary based networks centertable decision machine models en wikipedia wiki logic main its synaptic signals weighted t e positive dot product incoming x array least turings modern science head instructions repeat shows centerfigure br style line height px src images svg
+search: neuron inputs threshold function weights mcculloch pitts step yes table model neurons sum output vector movie not turing center neural artificial excitatory activation value only behavior fire watch cell inhibitory compute truth l jackson tarantino need information same biological must input fires logical where since samuel quentin both matrix computation machines mathematical tape figure functions org cognition firing boolean binary based networks centertable decision machine models en wikipedia wiki logic main its synaptic signals weighted t e positive dot product incoming x array least turings modern science head instructions repeat shows centerfigure br style line height px src images svg
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -36,11 +36,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Alan Turing's formalization of computation as <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines</a> provided the theoretical and mathematical foundations for modern computer science<a href="#fn1"><sup>1</sup></a>. Turing Machines are an abstraction of a general computation device. Turing (1937) described these machines as composed by an "infinite tape" made of "cells" (divided into squares), a "tape head", and a table with a finite set of instructions. Each cell contained a symbol, either a 0 or a 1, serving as information storage. The tape head can move along the tape, one cell at the time, to read the cell information. Then, according to a table of instructions at that state and the cell information, the tape head can erase information, write information, or do nothing, to then move to the next cell at the left or the right. In the next cell, the tape head would again do something according to the table of instructions and the cell information, to then repeat the process until the last instruction in the table of instructions. Figure 1 shows a representation of a Turing machine.</p>
-<p><center>Figure 1<center/>
-<br style = “line-height:100px;”>
-<img src="images/Turing-machine.svg" width="70%"/></p>
-<p>The particularities of Turing's description of Turing Machines are not relevant. You can envision a different way to implement the same general computing device. Indeed, alternative models of computation exist, such as "lambda calculus" and "cellular automata" (Fernández, 2009). The crucial part of Turing's proposal was the articulation of a machine capable to implement <em>any computable program</em>. The <em>computable</em> part of the last phrase is important because as Turing demonstrated, there are functions that can not be computed, like the <a href="https://en.wikipedia.org/wiki/Entscheidungsproblem"><em>Entscheidungsproblem</em></a> (a famous problem in mathematics formulated by <a href="https://en.wikipedia.org/wiki/David_Hilbert">David Hilbert</a> in 1928), one of the problems that motivated Turing's work in the first place.</p>
-<p>The advances in computability theory inspired a new generation of researchers to develop computational models in the study of cognition. Among the pioneers were <a href="https://en.wikipedia.org/wiki/Warren_McCulloch">Warren McCulloch</a> and <a href="https://en.wikipedia.org/wiki/Walter_Pitts">Walter Pitts</a>, who in 1943 proposed that biological neurons can be described as computational devices. In a way, this is another iteration to the problem of describing a general-purpose computation device. This time, inspired by how biological neurons work, and with an architecture significantly different than Turing Machines.</p>
 
 </div>
 </div>
@@ -51,6 +46,21 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><center>Figure 1<center/>
+<br style = “line-height:100px;”>
+<img src="images/Turing-machine.svg" width="70%"/></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The particularities of Turing's description of Turing Machines are not relevant. You can envision a different way to implement the same general computing device. Indeed, alternative models of computation exist, such as "lambda calculus" and "cellular automata" (Fernández, 2009). The crucial part of Turing's proposal was the articulation of a machine capable to implement <em>any computable program</em>. The <em>computable</em> part of the last phrase is important because as Turing demonstrated, there are functions that can not be computed, like the <a href="https://en.wikipedia.org/wiki/Entscheidungsproblem"><em>Entscheidungsproblem</em></a> (a famous problem in mathematics formulated by <a href="https://en.wikipedia.org/wiki/David_Hilbert">David Hilbert</a> in 1928), one of the problems that motivated Turing's work in the first place.</p>
+<p>The advances in computability theory inspired a new generation of researchers to develop computational models in the study of cognition. Among the pioneers were <a href="https://en.wikipedia.org/wiki/Warren_McCulloch">Warren McCulloch</a> and <a href="https://en.wikipedia.org/wiki/Walter_Pitts">Walter Pitts</a>, who in 1943 proposed that biological neurons can be described as computational devices. In a way, this is another iteration to the problem of describing a general-purpose computation device. This time, inspired by how biological neurons work, and with an architecture significantly different than Turing Machines.</p>
 <p>The heart of the McCulloch and Pitts idea is that given the <em>all-or-none</em> character of neural activity, the behavior of the nervous system can be described by means of <em>propositional logic</em>. To understand this, let's examine that main components of biological neurons:</p>
 <ol>
 <li>the <strong>cell body</strong> containing the nucleus and metabolic machinery</li>
@@ -451,7 +461,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Application:-boolean-algebra-using-the-MccCulloch-Pitts-artificial-neuron">Application: boolean algebra using the MccCulloch-Pitts artificial neuron<a class="anchor-link" href="#Application:-boolean-algebra-using-the-MccCulloch-Pitts-artificial-neuron"> </a></h2>
+<h2 id="Application:-boolean-algebra-using-the-McCulloch-Pitts-artificial-neuron">Application: boolean algebra using the McCulloch-Pitts artificial neuron<a class="anchor-link" href="#Application:-boolean-algebra-using-the-McCulloch-Pitts-artificial-neuron"> </a></h2>
 </div>
 </div>
 </div>
