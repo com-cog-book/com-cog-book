@@ -13,7 +13,7 @@ prev_page:
 next_page:
   url: /features/02-rossenblatt-perceptron.html
 suffix: .ipynb
-search: neuron inputs threshold function weights yes step mcculloch pitts model movie output table artificial sum vector not logical neural behavior neurons center excitatory activation only watch cognition boolean value compute truth both samuel l jackson quentin tarantino need computational logic must fires functions since matrix turing its inhibitory where centertable decision same array mathematical models activity main synaptic signals fire input firing t binary positive dot product based incoming x least machines cognitive lets figure nor outputs study w weighted e four steps generate between define expressed activated imagine mp therefore want obtain networks provided modern computer science extent limitations
+search: neuron inputs threshold function weights pitts mcculloch step yes table model neurons sum output vector movie not turing center neural artificial excitatory activation value only behavior fire watch cell inhibitory compute truth l jackson tarantino need information same biological must input fires logical where since samuel quentin both matrix computation machines mathematical tape figure functions org cognition firing boolean binary based networks centertable decision machine models en wikipedia wiki logic main its synaptic signals weighted t e positive dot product incoming x array least turings modern science head instructions repeat shows centerfigure br style line height px src images svg
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -25,14 +25,39 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Alan Turing's formalization of computation as <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines</a> provided the theoretical and mathematical foundations for modern computer science. Turing Machines are a construct, an abstraction of a general computation device that helps to reveal the extent and limitations of what can be computed. Every modern computer device can be described as a Turing Machine, regardless of the details of its physical implementation<a href="#fn1"><sup>1</sup></a>. This foundation inspired whole generation of cognitive scientist to develop computational models of cognition, among them, <a href="https://en.wikipedia.org/wiki/Warren_McCulloch">Warren McCulloch</a> and <a href="https://en.wikipedia.org/wiki/Walter_Pitts">Walter Pitts</a>, who in 1943 first proposed that neuronal activity in the brain can be represented as computational devices in resemblance to Turing Machines in their article "<em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em>".</p>
-<p>The hearth of the McCulloch and Pitts idea is that given the <em>all-or-none</em> character of neural activity, the behavior of the nervous system can be described by means of <em>propositional logic</em>. To understand this, let's examine that main components of biological neurons:</p>
+<h2 id="History-and-definition">History and definition<a class="anchor-link" href="#History-and-definition"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Alan Turing's formalization of computation as <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines</a> provided the theoretical and mathematical foundations for modern computer science<a href="#fn1"><sup>1</sup></a>. Turing Machines are an abstraction of a general computation device. Turing (1937) described these machines as composed by an "infinite tape" made of "cells" (divided into squares), a "tape head", and a table with a finite set of instructions. Each cell contained a symbol, either a 0 or a 1, serving as information storage. The tape head can move along the tape, one cell at the time, to read the cell information. Then, according to a table of instructions at that state and the cell information, the tape head can erase information, write information, or do nothing, to then move to the next cell at the left or the right. In the next cell, the tape head would again do something according to the table of instructions and the cell information, to then repeat the process until the last instruction in the table of instructions. Figure 1 shows a representation of a Turing machine.</p>
+<p><center>Figure 1<center/>
+<br style = “line-height:100px;”>
+<img src="images/Turing-machine.svg" width="70%"/></p>
+<p>The particularities of Turing's description of Turing Machines are not relevant. You can envision a different way to implement the same general computing device. Indeed, alternative models of computation exist, such as "lambda calculus" and "cellular automata" (Fernández, 2009). The crucial part of Turing's proposal was the articulation of a machine capable to implement <em>any computable program</em>. The <em>computable</em> part of the last phrase is important because as Turing demonstrated, there are functions that can not be computed, like the <a href="https://en.wikipedia.org/wiki/Entscheidungsproblem"><em>Entscheidungsproblem</em></a> (a famous problem in mathematics formulated by <a href="https://en.wikipedia.org/wiki/David_Hilbert">David Hilbert</a> in 1928), one of the problems that motivated Turing's work in the first place.</p>
+<p>The advances in computability theory inspired a new generation of researchers to develop computational models in the study of cognition. Among the pioneers were <a href="https://en.wikipedia.org/wiki/Warren_McCulloch">Warren McCulloch</a> and <a href="https://en.wikipedia.org/wiki/Walter_Pitts">Walter Pitts</a>, who in 1943 proposed that biological neurons can be described as computational devices. In a way, this is another iteration to the problem of describing a general-purpose computation device. This time, inspired by how biological neurons work, and with an architecture significantly different than Turing Machines.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The heart of the McCulloch and Pitts idea is that given the <em>all-or-none</em> character of neural activity, the behavior of the nervous system can be described by means of <em>propositional logic</em>. To understand this, let's examine that main components of biological neurons:</p>
 <ol>
 <li>the <strong>cell body</strong> containing the nucleus and metabolic machinery</li>
 <li>an <strong>axon</strong> that transmit information via its synaptic terminals, and </li>
 <li>the <strong>dendrites</strong> that receive inputs from other neurons via synapses. </li>
 </ol>
-<p><strong>Figure 1</strong> shows an abstract scheme of the main components of two neurons and their synapses.</p>
+<p><strong>Figure 2</strong> shows an abstract scheme of the main components of two neurons and their synapses.</p>
 
 </div>
 </div>
@@ -43,7 +68,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><span id="fn1"> Footnote 1: examining the definition of a Turin Machine is beyond the scope of this tutorial. For an extended explanation of Turing Machines see https://plato.stanford.edu/entries/turing-machine/#DefiTuriMach </span></p>
+<p><span id="fn1"> *Footnote* 1: a detalied examination of the Turin Machine is beyond the scope of this tutorial. For an extended explanation of Turing Machines see https://plato.stanford.edu/entries/turing-machine/#DefiTuriMach </span></p>
 
 </div>
 </div>
@@ -54,7 +79,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><center>Figure 1<center/>
+<p><center>Figure 2<center/>
 <br style = “line-height:100px;”>
 <img src="images/neuron_synapse.svg" width="80%"/></p>
 
@@ -67,8 +92,16 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Neurons communicate with each other by passing <em>electro-chemical signals</em> from the axon terminals in the pre-synaptic neuron to the dendrites in the post-synaptic neuron. Usually, each neuron connects to hundreds or thousands of neurons. For a neuron to "<em>fire</em>", certain <em>threshold</em> of electrochemical excitation must be passed. The <em>combined excitatory and inhibitory input</em> received by the post-synaptic neuron from the pre-synaptic neurons determines whether the neuron <em>passes such threshold and fires</em>. Is this <em>firing</em> or <em>spiking</em> behavior that McCulloch and Pitts modeled computationally. Furthermore, by carefully calibrating the magnitude of the inhibitory and excitatory signals passed to a neuron, McCulloch and Pitts were able to emulate the behavior of a few <em>boolean functions</em> or <em>logical gates</em>, like the <em>AND</em>, <em>OR</em>, and <em>NOR</em>. If you think in this process abstractly, neurons are biological computational devices as well in the sense that they can receive inputs, apply calculations over those inputs algorithmically, and produce outputs.</p>
-<p>At this point you may be thinking "<em>Hold on, this is a model of the function of a single neuron, not of a cognitive process</em>", and you would be correct. Nevertheless, there a few good reasons why we study the McCulloch and Pitts model as a seminal work in computational models of cognition. This model was the first stepping-stone in the development of later more complex computational models of cognition, like the <em>perceptron</em> and <em>multilayer-perceptron</em>. Additionally, as we mentioned before, McCulloch and Pitts also showed that such a model could be used to represent boolean functions. Boolean functions are essentially about logic, and logical reasoning is one of the main topics of study in cognitive sciences. In a way, the McCulloch and Pitts artificial neuron provided one of the first clues about how to study logic and reasoning in humans from a computational perspective.</p>
+<p>Neurons communicate with each other by passing <em>electro-chemical signals</em> from the axon terminals in the pre-synaptic neuron to the dendrites in the post-synaptic neuron. Usually, each neuron connects to hundreds or thousands of neurons. For a neuron to "<em>fire</em>", certain voltage <em>threshold</em> must be passed. The <em>combined excitatory and inhibitory input</em> received by the post-synaptic neuron from the pre-synaptic neurons determines whether the neuron passes the threshold and fires. Is this <em>firing</em> or <em>spiking</em> behavior that McCulloch and Pitts modeled computationally. Furthermore, by carefully calibrating the combination of inhibitory and excitatory signals passed to a neuron, McCulloch and Pitts were able to emulate the behavior of a few <em>boolean functions</em> or <em>logical gates</em>, like the <em>AND</em> gate and the <em>OR</em> gate. Thinking in this process abstractly, neurons can be seen as biological computational devices, in the sense that they can receive inputs, apply calculations over those inputs algorithmically, and then produce outputs.</p>
+<p>The main elements of the McCulloch-Pitts model can be summarized as follow:</p>
+<ol>
+<li>Neuron activation is binary. A neuron either fire or not-fire</li>
+<li>For a neuron to fire, the weighted sum of inputs has to be equal or larger than a predefined threshold</li>
+<li>If one or more inputs are inhibitory the neuron will not fire</li>
+<li>It takes a fixed one time step for the signal to pass through a link </li>
+<li>Neither the structure nor the weights change over time</li>
+</ol>
+<p>McCulloch and Pitts decided on this architecture based on what it was known at the time about the function of biological neurons. Naturally, they also wanted to abstract away most details and keep what they thought were the <em>fundamentals elements</em> to represent computation in biological neurons. Next, we will examine the formal definition of this model.</p>
 
 </div>
 </div>
@@ -79,7 +112,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Mathematical-Definition">Mathematical Definition<a class="anchor-link" href="#Mathematical-Definition"> </a></h3>
+<h2 id="Mathematical-Definition">Mathematical Definition<a class="anchor-link" href="#Mathematical-Definition"> </a></h2>
 </div>
 </div>
 </div>
@@ -89,7 +122,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>McCulloch and Pitts developed a mathematical formulation know as <em>linear threshold gate</em>, which describes the activity of a single neuron with two states, <em>firing</em> or <em>not-firing</em>. In its simple form, the mathematical formulation is as follows:</p>
+<p>McCulloch and Pitts developed a mathematical formulation know as <em>linear threshold gate</em>, which describes the activity of a single neuron with two states, <em>firing</em> or <em>not-firing</em>. In its simplest form, the mathematical formulation is as follows:</p>
 
 </div>
 </div>
@@ -128,7 +161,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Where  $I_1, I_2,..., I_N$ are binary input values  $\in\{0,1\}$ ;  $W_1, W_2,..., W_N$ are weights associated with each input $\in\{-1,1\}$ ; $Sum$ is the weighted sum of inputs; and $T$ is a predefined threshold value for the neuron activation (i.e., <em>firing</em>).  An input is considered <em>excitatory</em> when its contribution to the weighted sum is positive, for instance $I_1*W_1 = 1 * 1 = 1$; whereas an input is considered <em>inhibitory</em> when its contribution to the weighted sum is negative, for instance $I_1*W_1 = 1 * -1 = -1$. If the value of $Sum$ is $\geq$ $T$, the neuron fires, otherwise, it does not.  <strong>Figure 2</strong> display a graphical representation of the function.</p>
+<p>Where  $I_1, I_2,..., I_N$ are binary input values  $\in\{0,1\}$ ;  $W_1, W_2,..., W_N$ are weights associated with each input $\in\{-1,1\}$ ; $Sum$ is the weighted sum of inputs; and $T$ is a predefined threshold value for the neuron activation (i.e., <em>firing</em>). <strong>Figure 3</strong> shows a graphical representation of the McCulloch-Pitts artificial neuron.</p>
 
 </div>
 </div>
@@ -139,7 +172,31 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>Figure 2</center>
+<p><center>Figure 3<center/>
+<br style = “line-height:100px;”>
+<img src="images/mp-neuron.svg" width="30%"/></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An input is considered <em>excitatory</em> when its contribution to the weighted sum is positive, for instance $I_1*W_1 = 1 * 1 = 1$; whereas an input is considered <em>inhibitory</em> when its contribution to the weighted sum is negative, for instance $I_1*W_1 = 1 * -1 = -1$. If the value of $Sum$ is $\geq$ $T$, the neuron fires, otherwise, it does not. <strong>Figure 4</strong> shows a graphical representation of the threshold function.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>Figure 4</center>
 <br style = “line-height:100px;”>
 <center><img src="images/linear_threshold_function_crop.svg" width="60%" /></center>
 </div>
@@ -152,6 +209,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is known as a <em>step-function</em>, where the $y$-axis encodes the activation-state of the neuron, and the $Sum$-axis encodes the output of the weighted sum of inputs.</p>
+<p><strong>Note</strong>: It is important to highlight that the only role of the "weights" in the McCulloch-Pitts model, as presented here, is to determine whether the input is excitatory or inhibitory. If you are familiar with modern neural networks, this is a different role. In modern neural networks, weights have the additional role of <em>increasing</em> and <em>decreasing</em> the input values. From that perspective, the McCulloch-Pitts model is actually <em>unweighted</em>.</p>
 
 </div>
 </div>
@@ -172,7 +230,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Implementing the McCulloch-Pitts artificial neuron in code is very simple thanks to the features and libraries of high-level programming languages that are available today. We can do this in four steps using <code>python</code> and <code>numpy</code>:</p>
+<p>Implementing the McCulloch-Pitts artificial neuron in code is very simple thanks to the features offered by libraries of high-level programming languages that are available today. We can do this in four steps using <code>python</code> and <code>numpy</code>:</p>
 
 </div>
 </div>
@@ -393,7 +451,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Boolean-Algebra-Using-the-McCulloch-Pitts-Artificial-Neuron">Boolean Algebra Using the McCulloch-Pitts Artificial Neuron<a class="anchor-link" href="#Boolean-Algebra-Using-the-McCulloch-Pitts-Artificial-Neuron"> </a></h2>
+<h2 id="Application:-boolean-algebra-using-the-MccCulloch-Pitts-artificial-neuron">Application: boolean algebra using the MccCulloch-Pitts artificial neuron<a class="anchor-link" href="#Application:-boolean-algebra-using-the-MccCulloch-Pitts-artificial-neuron"> </a></h2>
 </div>
 </div>
 </div>
@@ -403,7 +461,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Understanding how logical thinking works has been one of the main goals of cognitive scientists since the creation of the field. One way to approach the study of logical thinking is by building an artificial system able to perform logical operations. <em>Truth tables</em> are a schematic way to express the behavior of <em>boolean functions</em>, which are essentially logical operations. Here, we will use the McCulloch-Pitts artificial neuron model to replicate the behavior of a few boolean functions, as expressed in their respective truth tables. Notice that I'm using the term "function" to describe boolean logic, but you may find that the term "logic gate" is also widely used, particularly in the electronic circuits literature where this kind of function is fundamental.</p>
+<p>Understanding how logical thinking works has been one of the main goals of cognitive scientists since the creation of the field. One way to approach the study of logical thinking is by building an artificial system able to perform logical operations. <a href="https://en.wikipedia.org/wiki/Truth_table"><em>Truth tables</em></a> are a schematic way to express the behavior of <em>boolean functions</em>, which are essentially logical operations. Here, we will use the McCulloch-Pitts model to replicate the behavior of a few boolean functions, as expressed in their respective truth tables. Notice that I'm using the term "function" to describe boolean logic, but you may find that the term "logic gate" is also widely used, particularly in the electronic circuits literature where this kind of function is fundamental.</p>
 
 </div>
 </div>
@@ -424,7 +482,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The <em>AND</em> function is "activated" only when all the incoming inputs are "on", this is, it outputs a 1 only when all inputs are 1. In "neural" terms, the neuron <em>fires</em> when the incoming signals are both <em>excitatory</em>. On a more abstract level, think in a situation where you would decide that something is "true" or you would say "yes", depending on the state of conditions. This relationship is expressed in <strong>Table 1</strong></p>
+<p>The <em>AND</em> function is "activated" only when all the incoming inputs are "on", this is, it outputs a 1 only when all inputs are 1. In "neural" terms, the neuron <em>fires</em> when all the incoming signals are <em>excitatory</em>. On a more abstract level, think in a situation where you would decide that something is "true" or you would say "yes", depending on the value of some "conditions" or "variables". This relationship is expressed in <strong>Table 1</strong>.</p>
 
 </div>
 </div>
@@ -475,7 +533,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, imagine that you are deciding whether to watch a movie or not. In this simplified scenario, you would watch the movie only if the movie features Samuel L. Jackson AND the director is Quentin Tarantino. Now the truth table looks like this:</p>
+<p>Now, imagine that you are deciding whether to watch a movie or not. In this simplified scenario, you would watch the movie <em>only if</em> the movie features Samuel L. Jackson AND the director is Quentin Tarantino. Now the truth table looks like this:</p>
 
 </div>
 </div>
@@ -526,7 +584,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As we mentioned, the AND function can be implemented with the MP artificial neuron model. Each neuron has four parts: inputs, weights, threshold, and output. The <em>inputs</em> are given in the Movie Decision Table, and the <em>output</em> is completely determined by other elements, therefore, to create an AND function, we need to manipulate the <em>weights</em> and the <em>threshold</em>. Since we want the neuron to fire only when both inputs are excitatory, the threshold for activation must be 2. To obtain an output of 2, we need both inputs to be excitatory, therefore, the weights must be positive (i.e., 1). Summarizing, we need:</p>
+<p>As we mentioned, the AND function can be implemented with the McCulloch-Pitts model. Each neuron has four parts: <em>inputs</em>, <em>weights</em>, <em>threshold</em>, and <em>output</em>. The <em>inputs</em> are given in the <strong>Movie Decision Table</strong>, and the <em>output</em> is completely determined by other elements, therefore, to create an AND function, we need to manipulate the <em>weights</em> and the <em>threshold</em>. Since we want the neuron to fire only when both inputs are excitatory, the threshold for activation must be 2. To obtain an output of 2, we need both inputs to be excitatory, therefore, the weights must be positive (i.e., 1). Summarizing, we need:</p>
 <ul>
 <li>weights: all positive</li>
 <li>threshold: 2</li>
@@ -674,7 +732,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Note</strong>: in case you are not sure why multiplying a 4x2 matrix by a 1x2 vector works, the answer is that <code>numpy</code> internally "broadcast" the smaller array to match the shape of the larger array. This means that the 1x2 is transformed into a 4x2 array where each new row replicates the values of the original 1x2 array. More on broadcasting <a href="https://numpy.org/doc/1.18/user/basics.broadcasting.html">here</a></p>
+<p><strong>Note</strong>: in case you are wondering why multiplying a 4x2 matrix by a 1x2 vector works, the answer is that <code>numpy</code> internally "broadcast" the smaller array to match the shape of the larger array. This means that the 1x2 is transformed into a 4x2 array where each new row replicates the values of the original 1x2 array. More on broadcasting <a href="https://numpy.org/doc/1.18/user/basics.broadcasting.html">here</a>.</p>
 
 </div>
 </div>
@@ -754,7 +812,7 @@ Activation: 1
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As expected, only the last movie, with Samuel L. Jackson as an actor and Quentin Tarantino as director, resulted in an activated neuron.</p>
+<p>As expected, only the last movie, with Samuel L. Jackson as an actor and Quentin Tarantino as director, resulted in the neuron firing.</p>
 
 </div>
 </div>
@@ -775,7 +833,7 @@ Activation: 1
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The <em>OR</em> function is "activated" when <em>at least one</em> of the incoming inputs is "on". In "neural" terms, the neuron <em>fires</em> when at least one of the incoming signals is <em>excitatory</em>. This relationship is expressed in <strong>Table 3</strong></p>
+<p>The <em>OR</em> function is "activated" when <em>at least one</em> of the incoming inputs is "on". In "neural" terms, the neuron <em>fires</em> when at least one of the incoming signals is <em>excitatory</em>. This relationship is expressed in <strong>Table 3</strong>.</p>
 
 </div>
 </div>
@@ -826,7 +884,7 @@ Activation: 1
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Imagine that you decide to be flexible about your decision criteria. Now, you will watch the movie if at least one of your favorite stars, Samuel L. Jackson or Quentin Tarantino, is part of the movie. Now the truth table looks like this:</p>
+<p>Imagine that you decide to be flexible about your decision criteria. Now, you will watch the movie <em>if at least one</em> of your favorite stars, Samuel L. Jackson or Quentin Tarantino, is involved in the movie. Now, the truth table looks like this:</p>
 
 </div>
 </div>
@@ -877,8 +935,7 @@ Activation: 1
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since we want the neuron to fire when at least one of the inputs is excitatory (Samuel or Quentin is part of the movie), 
-the threshold for activation must be 1. To obtain an output of at least 1, we need both inputs to be excitatory, therefore, the weights must be positive (i.e., 1). Summarizing, we need:</p>
+<p>Since we want the neuron to fire when at least one of the inputs is excitatory, the threshold for activation must be 1. To obtain an output of at least 1, we need both inputs to be excitatory, therefore, the weights must be positive (i.e., 1). Summarizing, we need:</p>
 <ul>
 <li>weights: all positive</li>
 <li>threshold: 1</li>
@@ -925,7 +982,7 @@ the threshold for activation must be 1. To obtain an output of at least 1, we ne
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since neither the matrix of inputs nor the array of weights changes, the dot product of those stays the same.</p>
+<p>Since neither the matrix of inputs nor the vector of weights changes, the dot product of those stays the same.</p>
 
 </div>
 </div>
@@ -946,7 +1003,7 @@ the threshold for activation must be 1. To obtain an output of at least 1, we ne
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This function is defined already.</p>
+<p>We can use the <code>linear_threshold_gate</code> function again.</p>
 
 </div>
 </div>
@@ -1026,7 +1083,7 @@ Activation: 1
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The <em>OR</em> function is "activated" when <em>all</em> the incoming inputs are "off". In this sense, it is the inverse of the OR function. In "neural" terms, the neuron <em>fires</em> when all the signals are <em>inhibitory</em>. This relationship is expressed in <strong>Table 5</strong></p>
+<p>The <em>OR</em> function is "activated" when <em>all</em> the incoming inputs are "off". In this sense, it is the inverse of the OR function. In "neural" terms, the neuron <em>fires</em> when all the signals are <em>inhibitory</em>. This relationship is expressed in <strong>Table 5</strong>.</p>
 
 </div>
 </div>
@@ -1099,22 +1156,22 @@ Activation: 1
 <tr>
 <td>No</td>
 <td>No</td>
-<td>yes</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>No</td>
 <td>Yes</td>
-<td>no</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Yes</td>
 <td>No</td>
-<td>no</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Yes</td>
 <td>Yes</td>
-<td>no</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
@@ -1253,7 +1310,7 @@ Activation: 1
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The function remains the same</p>
+<p>The function remains the same.</p>
 
 </div>
 </div>
@@ -1333,10 +1390,10 @@ Activation: 0
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Many other boolean functions can be emulated with this simple, yet versatile model. Nonetheless, it naturally has many limitations that at the time were not as obvious as we know today. Among the main ones:</p>
+<p>Many other boolean functions can be emulated with this simple, yet versatile model. Nonetheless, it has many limitations. Among the main ones are:</p>
 <ul>
-<li><strong>Only binary inputs and outputs are allowed</strong>: this is a significant limitation since many of the features that you can imagine can be useful to make decisions are <em>continuous</em> rather than binary. The same goes for the decisions themselves, wherein many instances you may want to attach a continuous value to a decision instead of a yes or no label.</li>
-<li><strong>No learning is possible</strong>: as you may notice, you have to figure it out the solution to your problem <em>beforehand</em> via <em>analysis</em>. In this sense, the model has no autonomy whatsoever, restricting the problems that can be solved to the ones that you know how to solve already. </li>
+<li><strong>Only binary inputs and outputs are allowed</strong>: this is a significant limitation since many of the features that you can imagine can be useful to make decisions are <em>continuous</em> rather than binary. The same goes for the decisions themselves, where in many instances you may want to attach a continuous value (e.g., a probability value) to a decision instead of a yes or no label.</li>
+<li><strong>No learning is possible</strong>: as you may have realized, you have to figure it out the solution to your problem <em>beforehand</em>. In this sense, the model has no autonomy whatsoever, restricting the problems that can be solved to the ones that you know how to solve already. </li>
 <li><strong>Manual adjustment of the weights and threshold</strong>: connected to the lack of a learning procedure, once you figure out the solution, you will have to adjust all the parameters by hand. </li>
 </ul>
 
@@ -1359,8 +1416,8 @@ Activation: 0
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The McCulloch-Pitts artificial neuron was a significant first step in the development of artificial neural network models of cognition. Interestingly, it lacks two elements that are at the core of modern artificial neural networks: (1) it works with binary inputs and outputs, instead of arbitrary real-valued numbers, and (2) it does not incorporate a learning algorithm, which limits its functionality to problems that can be derived by the modeler. That being said, this model was a remarkable creative achievement to the extent that blended insights from theoretical computer science, logic, and neuroscience.</p>
-<p>An important remaining question is to what extent the MP artificial neuron says something substantial about human cognition. Although is true that the MP model was able to perform logical inference as humans do, it is not clear that the procedure is indeed similar to what is going on in the human mind. Part of the credibility of this approach comes from the fact that it is based on the observed behavior of biological neurons. If you come from the perspective that cognition is whatever the brain is doing, you have a starting point to validate this model. Now, binary threshold functions are an extremely simplified model of what brains do. Is this a good enough model of neurocognitive function? Probably not. As we know today, the behavior of ensembles of neurons is incredibly complex, to the point that it is hard to even conceive a complete model of brain function. That being said, it would be unfair to judge this model against such standards. As we mentioned in the introduction, computational models of cognition do not pretend to be a replica of the mind. From that perspective, it is undeniable that the MP model provided important insights into how to use this approach to better understand human cognition.</p>
+<p>The McCulloch-Pitts artificial neuron was a significant first step in the development of artificial neural network models of cognition. Interestingly, it lacks two elements that are at the core of modern artificial neural networks: (1) it works with binary inputs and outputs, instead of arbitrary real-valued numbers, and (2) it does not incorporate a learning algorithm, which limits its functionality to problems that can be derived by the modeler. That being said, this model was a remarkable creative achievement to the extent that blended insights from theoretical computer science, logic, neuroscience, and cognitive psychology.</p>
+<p>An important remaining question is to what extent the McCulloch-Pitts artificial neurons says something substantial about human cognition. Although is true that this model was able to perform logical inference as humans do, it is not clear that the procedure is indeed similar to what is going on in the human mind. Part of the credibility of this approach comes from the fact that it is based on the observed behavior of biological neurons. If you come from the perspective that cognition is whatever the brain is doing, you have a starting point to validate this model. Now, binary threshold functions are an extremely simplified model of what brains do. Is this a good enough model of neurocognitive function? Probably not. As we know today, the behavior of ensembles of neurons is incredibly complex, to the point that it is hard to even conceive a complete model of brain function. That being said, it would be unfair to judge this model against such standards. As we mentioned in the introduction, computational models of cognition do not pretend to be a replica of the mind. From that perspective, it is undeniable that the  McCulloch-Pitts model provided important insights into how to use this approach to better understand human cognition.</p>
 
 </div>
 </div>
@@ -1383,8 +1440,10 @@ Activation: 0
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Fausett, L. (1994). When Neural Networks Began: The McCulloch-Pitts Neuron. In Fundamentals of neural networks: Architectures, algorithms, and applications (pp. 26–37). Prentice-Hall, Inc.</li>
+<li>Fernández, M. (2009). Models of Computation: An Introduction to Computability Theory. Springer Science &amp; Business Media.</li>
 <li>McCulloch, W. S., &amp; Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. The bulletin of mathematical biophysics, 5(4), 115-133.</li>
 <li>Rojas, R. (2013). Threshold Logic. In Neural networks: A systematic introduction (pp. 29–52). Springer Science &amp; Business Media.</li>
+<li>Turing, A. M. (1937). On computable numbers, with an application to the Entscheidungsproblem. Proceedings of the London Mathematical Society, 2(1), 230–265.</li>
 </ul>
 
 </div>
