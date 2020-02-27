@@ -1,0 +1,75 @@
+---
+title: |-
+  A Roadmap to Neural Network Models of Cognition
+pagenum: 4
+prev_page:
+  url: /features/intro-com-mod-cog.html
+next_page:
+  url: /features/mp-artificial-neuron.html
+suffix: .md
+search: multiple single real value neurons linear learning neuron network model binary models layers logic perceptron mcculloch pitts layer artificial easy brain roadmap neural domain center inputs delta rule backpropagation non vision whereas hard r cognition e why field activation function application outputs yes based where solve ones should human main networks ill cover book perspective particular procedure attention table reference type differentiable perception adaline multilayer elman language dependencies convolutional rescorla wagner agents reward complex solved systems essentially easily figure images considering assumption researchers locomotion reasoning feels chess relatively en wikipedia org wiki moravecsparadox moravec level skills journal azevedo not invention
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">A Roadmap to Neural Network Models of Cognition</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the introductory chapter, I briefly mentioned connectionist models as one of the main approaches in the computational cognitive modeling landscape. Since neural networks models of cognition is the topic that I'll cover in this e-book, I'll expand on the history of this perspective, and also layout a "roadmap" to what comes next in this series.  In particular, this roadmap will help you to understand why we selected these models, why are important to the field, and how they connect to each other from an historical and technical perspective.</p>
+<p>There are multiple ways to characterize neural network models. We will cover all the major architectural design traits of each model, like the learning procedure, activation function, and domain application, but paying particular attention to what was novel or unique about them at the time they were introduced to the field. <strong>Table 1</strong> summarize the main characteristics that we will reference in this roadmap.</p>
+<center> Table 1 </center>
+| Model                 | Number of neurons | Number of layers | Type of Inputs | Type of Outputs | Learning procedure | Differentiable | Activation function   | Domain                      |
+| --------------------- | ----------------- | ---------------- | -------------- | --------------- | ------------------ | -------------- | --------------------- | :-------------------------- |
+| McCulloch-Pitts       | Single neuron     | Single layer     | Binary         | Binary          | None               | No             | Step                  | Logic                       |
+| Perceptron            | Multiple neurons  | Single layer     | Real value     | Binary?         | Delta rule?        | No             | Linear                | Perception?                 |
+| Adaline               | Multiple neurons  | Single layer     | Real value     | Real value      | Delta rule         | No             | Linear                | ?                           |
+| Multilayer Perceptron | Multiple neurons  | Multiple layers  | Real value     | Real value      | Backpropagation    | Yes            | Linear and Non-linear | ?                           |
+| Elman Network         | Multiple neurons  | Multiple layers  | Real value     | Real value      | Backpropagation    | Yes            | Linear and Non-linear | Language, time-dependencies |
+| Convolutional Network | Multiple neurons  | Multiple layers  | Real value     | Real value      | Backpropagation    | Yes            | Linear and Non-linear | Vision                      |
+| Rescorla-Wagner       | Agents            | Single agent     | Real value     | Real value      | Delta rule         | No             | ?                     | Reward-based learning       |
+
+
+
+## The McCulloch-Pitts artificial neuron: single neurons and logic gates
+
+We begin the journey with the McCulloch-Pitts artificial neuron, with is probably the first published neuron-based model of cognition. This model was extremely simple in its architecture, which is perfect as building block for more complex models: a single neuron, with a single layer, where each input has a single link to the output. Only binary inputs and binary outputs are allowed. No learning algorithm was implemented, which means that the problem to be solved has to be figured out by the modeler. As binary systems, the application domain was essentially restricted to logic, although you can easily envision other applications. **Figure 1** displays a graphical representation of the model. 
+
+<center> Figure 1: McCulloch-Pitts Artificial Neuron </center><p><img src="images/mp-neuron-concept.svg" alt=""></p>
+<p>Why logic? This is a fair question, considering that nowadays most of the attention in the neural network community seems to be concentrated in problems pertaining language and perception. Back in the day, a common assumption among researchers was that sensorimotor processes like vision or locomotion must be easy to solve, whereas the ones related to reasoning and decision-making should be the really hard ones, the ones worthy of the efforts of the brightest minds. After all, seeing "feels" easy whereas solving logical puzzles "feels" hard (to most people, anyways). Therefore, if you were able to tackle something like logic or chess, you would had essentially solved the hardest thing that you could possibly imagine, so everything else should be easy to solve. If you knock down the first and heaviest domino, the rest should go down easily as a chain reaction. This assumption turned out to be a bad miscalculation. As researchers rapidly learn, vision and locomotion are bafflingly hard to solve, whereas logic and chess where relatively easy to do for artificial systems. This is sometimes refereed as <a href="[https://en.wikipedia.org/wiki/Moravec%27s_paradox](https://en.wikipedia.org/wiki/Moravec&#39;s_paradox">"Moravec's paradox"</a>) (Moravec, 1998), in reference to the phenomena where "high-level" skills like reasoning are relatively easy to implement with computers, whereas "low-level" skills like vision and motor control are almost impossibly hard.</p>
+<p>All thing considered, McCulloch and Pitts planted the seeds for the future development of the field.</p>
+<p>Moravec, H. (1998). When will computer hardware match the human brain? <em>Journal of Evolution and Technology</em>, <em>Vol 1</em>.</p>
+<h2 id="The-Perceptron:-multiple-neurons-and-learning">The Perceptron: multiple neurons and learning<a class="anchor-link" href="#The-Perceptron:-multiple-neurons-and-learning"> </a></h2><p>A single neuron, with a single layer, and no learning procedures definitively leaves a lot of space for improvement, considering that the human brain has  over 86 billion of neurons hierarchically organized into multiple layers of very complex connectivity patterns (Azevedo et al., 2009).</p>
+<p>Rosenblatt: 
+"..the perceptron program is not primarily concerned with the invention of devices for "artificial intelligence", but rather with investigating the physical structures and neurodynamic principles which underlie "natural intelligence". A perceptron is first: and foremost a brain model, not an invention for pattern recognition." (p. vii-viii) / Neurodynamics book</p>
+<p>that takes binary inputs,</p>
+<p>Neurons</p>
+<p>Layers</p>
+<p>Inputs</p>
+<p>Outputs</p>
+<p>Learning</p>
+<p>Differentiable</p>
+<p>Activation function</p>
+<p>Application Domain</p>
+<p>Azevedo, F. A., Carvalho, L. R., Grinberg, L. T., Farfel, J. M., Ferretti, R. E., Leite, R. E., Filho, W. J., Lent, R., &amp; Herculano‐Houzel, S. (2009). Equal numbers of neuronal and nonneuronal cells make the human brain an isometrically scaled‐up primate brain. <em>Journal of Comparative Neurology</em>, <em>513</em>(5), 532–541.</p>
+<h2 id="The-Adaline:-linear-functions-and-delta-rule-learning">The Adaline: linear functions and delta-rule learning<a class="anchor-link" href="#The-Adaline:-linear-functions-and-delta-rule-learning"> </a></h2><p>...</p>
+<h2 id="The-Multilayer-Perceptron:-non-linear-units-and-backpropagation">The Multilayer Perceptron: non-linear units and backpropagation<a class="anchor-link" href="#The-Multilayer-Perceptron:-non-linear-units-and-backpropagation"> </a></h2><p>...</p>
+<h2 id="The-Elman-Network:-recurrent-networks-and-time-dependencies">The Elman Network: recurrent networks and time dependencies<a class="anchor-link" href="#The-Elman-Network:-recurrent-networks-and-time-dependencies"> </a></h2><p>...</p>
+<h2 id="The-Convolutional-Network:-convolutions,-pooling,-and-images">The Convolutional Network: convolutions, pooling, and images<a class="anchor-link" href="#The-Convolutional-Network:-convolutions,-pooling,-and-images"> </a></h2><p>...</p>
+<h2 id="The-Rescorla-Wagner-Model:-agents-and-reward-based-learning">The Rescorla-Wagner Model: agents and reward-based learning<a class="anchor-link" href="#The-Rescorla-Wagner-Model:-agents-and-reward-based-learning"> </a></h2><p>...</p>
+<h2 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions"> </a></h2><p>....</p>
+<h2 id="References">References<a class="anchor-link" href="#References"> </a></h2><p>...</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

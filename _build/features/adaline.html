@@ -1,48 +1,30 @@
 ---
-interact_link: content/features/02-rossenblatt-perceptron.ipynb
+interact_link: content/features/adaline.ipynb
 kernel_name: python3
 kernel_path: content/features
 has_widgets: false
 title: |-
-  The Perceptron
-pagenum: 5
+  The ADALINE
+pagenum: 7
 prev_page:
-  url: /features/01-MP-artificial-neuron.html
+  url: /features/perceptron.html
 next_page:
-  url: /features/03-adaline.html
+  url: /features/multilayer-perceptron.html
 suffix: .ipynb
-search: perceptron learning vector figures weights w value function delta information compute between product algorithm theorist where feature linear rule inner equation wk such code work connections brain step begin end model predicted implementation random rosenblatt ideas empiricist connectionist sensory stimulus system simple very defined decision training x bias term line plane case eta rate weight create proposed form storage takes into neurons organism input class threshold z cases otherwise net update process error python later matrix lets using xi errors further tall wider data knowledge wanted questions stored contained memory influence recognition mapping pattern inspired nervous e rather others formally
+search: adaline function learning training weights linear vector perceptron rule algorithm w compute widrow sum output sse figures set activation hat y eta difference between cost value class hoff step real x weight update values gradient errors using wj partial random pass after stanford means neural net network defined j where expected labels l rate surface yi implementation loop entire adaptive taking works squares mentioned input cases end point predicted comparing label e descent climbing hill python predictions matrix remember need same lets niter iteration test well tall wider problem grow networks b m ted yet artificial interested idea brain working
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
     <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">The Perceptron</div>
+    <div id="page-info"><div id="page-title">The ADALINE</div>
 </div>
     <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Frank Rosenblatt proposed the 'perceptron' algorithm as a way to formalize several ideas about knowledge representation and cognition in the mid 20th century (Rossenblatt, 1958). He wanted to approach two fundamental questions:</p>
-<ul>
-<li><strong>In what form is information stored or remembered?</strong> </li>
-<li><strong>How does the information contained in storage, or in memory, influence recognition and behavior?</strong></li>
-</ul>
-<p>According to Rossenblat, there were two distinct approaches to answer such questions: the <strong>code theorist</strong> and the <strong>empiricist/connectionist theorist</strong>. <strong>Code theorist</strong> proposed that sensory information is in the form of <em>coded representations</em> or images, with some sort of one-to-one mapping between the sensory stimulus and the stored pattern. On the other hand, <strong>empiricist/connectionist theorist</strong>, inspired by how biological systems actually work, proposed that the central nervous system acts as an intricate <em>switching network</em>, where information takes the form of new connections or pathways between centers of activity. In other words, accoding to empiricist/connectionist theorist, there is no simple one-to-one mapping from stimulus into memory, i.e., <em>the information or knowledge is contained in the connections or associations between neurons</em>, rather than as static blueprints to be compared with incoming sensory stimulus.</p>
-<p>Rosenblatt, inspired by the work of empiricist/connectionist theorist like Hebb, Hayek, and others, wanted to express these ideas more formally and rigorously in order to be tested computationally. Some key ideas guiding Rosenblatt reasoning where:</p>
-<ul>
-<li>The physical connections in the brain involved in learning and recognition vary from organism to organism</li>
-<li>Plasticity is a key feature of the nervous system, such that changes in response to experience</li>
-<li>Rewards and punishments can increase or decrease the probability of certain connections reacting to similar stimulus</li>
-</ul>
-<p>Therefore, information is understood as a dynamic ever-changing pattern of connectivity among neurons in the brain, which are subject to the influence of experience and the environment of the organism. As such, no two brains are the same, and the way in which your brain and may brain storage information about the same fact may be very completely different.</p>
-<p>The perceptron is a formal mathematical manifestation of these ideas. In essence, a <strong>single-layer perceptron</strong> is a system that:</p>
-<ul>
-<li>Takes and input through the sensory system (e.g., the retina)</li>
-<li>Combines the values of the inputs with the weights of the connections between the neurons</li>
-<li>Produce an output in an all-or-nothing fashion belonging to a class of objects (mathematically, as a step-function). </li>
-</ul>
-<p>Next, we formally define a perceptron and implement the algorithm in code.</p>
+<p>The Adaline algorithm (Adaptive Linear Algorithm) was proposed in 1959, shortly after Rosenblatt’s perceptron, by <strong>Bernard Widrow</strong> and <strong>Ted Hoff</strong> (one of the inventors of the microprocessor) at Stanford. Widrow and Hoff were electrical engineers, yet Widrow had attended the famous <em>Dartmouth Summer Research Project on Artificial Intelligence</em> in 1956, experience that got him interested in the idea of building brain-like artificial learning systems. When Widrow moved from MIT to Stanford, a colleague asked him whether he would be interested in taking Ted Hoff as his doctoral student. Widrow and Hoff came up with the Adaline algorithm on a Friday during their first session working together. At that time, implementing an algorithm in a mainframe computer was slow and expensive, so they decided to build a small device capable of being trained by the Adaline algorithm to learn to classify patterns of inputs.</p>
+<p>The main difference between the perceptron and Adaline, is that Adaline works by minimizin the <strong>sum of squares of the linear errors</strong> over a training set. This means that the learning rule is based on a <strong>linear activation function</strong> rather than a unit step function as in the perceptron. This is important as allows the minimization of a continuous cost function. Continuous cost functions have the advantage of being differentiable, which allows training neural nets by using the chain rule of calculus, which opened the door to train more complex algorithms like non-linear multilayer perceptrons, logistic regression, support vector machines, and others.</p>
 
 </div>
 </div>
@@ -53,7 +35,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Formal-definition-of-the-perceptron-algorithm">Formal definition of the perceptron algorithm<a class="anchor-link" href="#Formal-definition-of-the-perceptron-algorithm"> </a></h2>
+<h2 id="Formal-definition-of-ADALINE">Formal definition of ADALINE<a class="anchor-link" href="#Formal-definition-of-ADALINE"> </a></h2>
 </div>
 </div>
 </div>
@@ -63,92 +45,98 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Mathematically, the perceptron is a simple <strong>linear classifier</strong> defined by two formulas</p>
+<p>As we mentioned before, Adaline uses a <strong>linear activation function</strong>, which is essencially the <strong>identity function</strong> of the net input to the network. This is defined as:</p>
+$$\hat{y} = \sum_{j=1}^n x_j w_j + \theta$$<p>where:</p>
 <ul>
-<li>a <strong>decision or threshold function</strong></li>
-<li>a <strong>training or learning rule</strong></li>
+<li>$\hat{y}$ is the output of the model (real value scalar)  </li>
+<li>$x$ is a real value input vector   </li>
+<li>$w$ is a real vaue weight vector</li>
+<li>$\theta$ is a bias term  </li>
 </ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Decision-function">Decision function<a class="anchor-link" href="#Decision-function"> </a></h3>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The <strong>decision or threshold function</strong> for the perceptron is defined as:</p>
-$$  f(z) =
+<p>It is crucial to notice that even when we use a linear activation function to compute the output of the network, if we attempt to make a <strong>binary classification decision</strong>, we will still use a step-like decision function by taking the sign as:</p>
+$$  sgn(\hat{y}) =
 \begin{cases}
-+1,  &amp; \text{if $w$ $\cdot$ $x$ + $b$ &gt; 0} \\
+ +1,  &amp; \text{if $\hat{y}$ &gt; 0} \\
 -1, &amp; \text{otherwise}
 \end{cases}
-$$<p>where:</p>
+$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-note-on-the-Perceptron-and-Adaline-fundamental-difference">A note on the Perceptron and Adaline fundamental difference<a class="anchor-link" href="#A-note-on-the-Perceptron-and-Adaline-fundamental-difference"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At this point you may be wondering what's the difference between the Perceptron and Adaline considering that both end up using a step-function to make classifications. The difference is the <strong>learning rule to update the weight</strong> of the network. The perceptron update the weights by computing the difference between the expected and predicted <strong>class labels</strong>. In practice, this means that the perceptron is comparing three types of discrete values: -1, 0, and 1. On the other hand, Adaline computes the difference between the expected class label (i.e., -1 or 1) and the <strong>continious real value</strong> of the linear activation function.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learning-rule">Learning rule<a class="anchor-link" href="#Learning-rule"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we mentioned before, the Adaline learning rule consist of comparing the expected class label to the predicted continous real value output. To achieve this, Adaline uses the <strong>LMS (least mean square) algorithm</strong>, also know as <strong>Widrow-Hoff Delta Rule</strong>, which minimize the sum of squares of the linear errors over the training set. In the machine learning literature, this is know as a <strong>cost funtion</strong> to be minimized. This is defined as:</p>
+$$L = \sum_{j=1}^n (\hat{y}_j-y_j)^2$$<p>where:</p>
 <ul>
-<li>${z}$ is a vector of reald-valued features  </li>
-<li>$w$ is a vector of real-valued weights  </li>
-<li>$w \cdot x$ is a inner product   </li>
-<li>$b$ is the bias term  </li>
+<li>$\hat{y}$ is the output of the model (real value scalar)  </li>
+<li>$y$ is the expected class label (-1 or +1)</li>
 </ul>
-<p><strong>Note about the bias term</strong>: we add a bias term to allow the model to adjust the intercept of the line on the plane. Otherwise, the line would be forced to go through the origin in the cartesian plane (in the 2-Dimensional case), which might hinder the ability of the model to find the best line.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>To compute the <strong>net-input</strong> for the decision function, we need to compute the inner product (or dot product) of the feature vector and the weigths vector. The inner product is defined as:</p>
-\begin{equation*}
-z = \sum_{k=1}^n w_k x_k = w_0 x_0 + w_1 x_1 + ... + w_n x_n
-\end{equation*}
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Learning-rule">Learning rule<a class="anchor-link" href="#Learning-rule"> </a></h3>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The perceptron learning rule is simple: compute the mistmatch between the <strong>predicted value</strong> for a given exemplar its <strong>actual value</strong>, and then use such delta to update the value the weights vector. This is defined as:</p>
-\begin{equation*}
-w_k = w_k + \Delta w_k
-\end{equation*}<p>The $\Delta w_k$ is computed as:</p>
-\begin{equation*}
-\Delta w_k = \eta(y^i - \hat{y}^i)x^i_k
-\end{equation*}<p>where:</p>
+<p>Now the question is how to minimize sum of squares erros (SSE). We do this by adjusting the values of $w$ vector. Since we are working with a continous value function, we can compute the change in the SSE with respect to changes in $w$ by applying the <strong>gradient descent algorithm</strong>. Therefore, we update the values of $w$ by:</p>
+$$w_{j+1} \leftarrow w_j + \eta(- \Delta_j)$$<p>where:</p>
 <ul>
-<li>$\eta$ is the learning rate (0 -1 value)</li>
-<li>$y^i$ is the actual value ("true class")</li>
-<li>$\hat{y}^i$ is the predicted value ("predicted class")</li>
-<li>$x^i_k$ is the feature vector for case $k$</li>
+<li>$\eta$ is the learning rate (positive constant)</li>
+<li>$\Delta_j$ is the value of the gradient at a point in the SSE surface </li>
 </ul>
-<p><strong>Note about the learning rate $\eta$</strong>: the learning rate has the role of facilitating the training process by weighting the delta used to update the weights. This basically means that instead of completely replacing the previous weight with the sum of the weight + delta, we incorporate a <strong>proportion</strong> of the error into the updating process. This makes the learning process more stable and smooth.</p>
+<p>This algorithm works by taking steps of a size controled by the learning rate $\eta$, on the surface defined by the vector of weights. A common way to express this idea is in analogy to climbing: if you're in a mountain, you can ascent by <strong>climbing up-hill</strong> or descent by <strong>climbing down-hill</strong>. Since the surface defined by this quadratic function is convex (think in a bowl) and has a unique global minimun, <strong>we want to go down-hill</strong> (i.e., we do <em>gradient descent</em>) where the SSE is minimized.</p>
+<p>To obtain the gradient in a given point the convex-surface, we compute the partial derivative of the cost function $L$ with respect to each weight in the weight vector as:</p>
+$$\frac{\partial L} {\partial w_j} = -\sum_{i}(y_i - \hat{y_i})x_{ji}$$<p></p>
+<p>Finally, by replacing terms, the update rule can be writen as:</p>
+$$\Delta w_j = -\eta \frac{\partial L} {\partial w_j} = \eta\sum_{i}(y_i - \hat{y_i})x_{ji}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Adaline-algorithm-implementation">Adaline algorithm implementation<a class="anchor-link" href="#Adaline-algorithm-implementation"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will implement the Adaline algorithm from scrath with Python and Numpy (a Python package for scientific computing). The goal is to understand the perceptron step-by-step execution rather than achieving an elegant implementation. I'll break down each step into functions to ensemble everything at the end.</p>
 
 </div>
 </div>
@@ -159,29 +147,7 @@ w_k = w_k + \Delta w_k
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Perceptron-algorithm-implementation">Perceptron algorithm implementation<a class="anchor-link" href="#Perceptron-algorithm-implementation"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We will implement the perceptron algorithm from scrath with Python and Numpy (a Python package for scientific computing). The goal is to understand the perceptron step-by-step execution rather than achieving an elegant implementation. I'll break down each step into functions to ensemble everything at the end.</p>
-<p>The scikit-learn implementation can be found <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html">here</a>. In general, we don't want to re-implemented algorithms that has been thouroughly tested by others, to avoid duplication of work an potential bugs in our code.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Generate-random-weights-vector">Generate random weights vector<a class="anchor-link" href="#Generate-random-weights-vector"> </a></h3>
+<h3 id="Generate-vector-of-random-weights">Generate vector of random weights<a class="anchor-link" href="#Generate-vector-of-random-weights"> </a></h3>
 </div>
 </div>
 </div>
@@ -220,7 +186,7 @@ w_k = w_k + \Delta w_k
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Predictions from the percetron are obtained by a linear combination of features and weights. It is common practice to begin with a vector of small random weights that would be updated later by the perceptron learning rule.</p>
+<p>Predictions from Adaline are obtained by a linear combination of features and weights. It is common practice to begin with a vector of small random weights that would be updated later by the Adaline learning rule.</p>
 
 </div>
 </div>
@@ -271,6 +237,46 @@ w_k = w_k + \Delta w_k
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Compute-activation">Compute activation<a class="anchor-link" href="#Compute-activation"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">activation</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Compute linear activation&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">X</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the activation function returns the same values passed in. As we mentioned earlier, the linear activation function of Adaline, is the <strong>identity function</strong>, which means exactly this: units will be activated in direct proportion to the output of the linear combination of vectors and weights. Technically, we might not use this function and the result will be the same. Yet, we add this for conceptual completeness.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Compute-predictions">Compute predictions<a class="anchor-link" href="#Compute-predictions"> </a></h3>
 </div>
 </div>
@@ -300,7 +306,7 @@ w_k = w_k + \Delta w_k
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This method implements the <strong>threshold function</strong> which takes the net-value of the inner product and outputs a 1 if the predicted value is &gt;= 0, and -1 otherwise.</p>
+<p>Remember that although Adaline learning rule works by comparing the output of a linear function against the class labels, when doing predictions, we still need to pass the output by a <em>sgn function</em> to get class labels as in the perceptron.</p>
 
 </div>
 </div>
@@ -326,17 +332,18 @@ w_k = w_k + \Delta w_k
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;loop over exemplars and update weights&#39;&#39;&#39;</span>
-    <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">costs</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">random_weights</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">exemplar</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">):</span>
-        <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-            <span class="n">delta</span> <span class="o">=</span> <span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="n">predict</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
-            <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">xi</span>
-            <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
-            <span class="n">error</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">delta</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span>
-        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">w</span><span class="p">,</span> <span class="n">errors</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">):</span>
+        <span class="n">net_input_v</span> <span class="o">=</span> <span class="n">net_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">activation</span><span class="p">(</span><span class="n">net_input_v</span><span class="p">)</span> <span class="c1"># identity function</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">output</span><span class="p">)</span> <span class="c1"># compute errors for the entire dataset</span>
+        <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">errors</span> <span class="c1"># update weigths for the entire dataset (feature weights)</span>
+        <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">errors</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># update weigths for the entire dataset (bias-term weights)</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="p">(</span><span class="n">errors</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.0</span> 
+        <span class="n">costs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+ 
+    <span class="k">return</span> <span class="n">w</span><span class="p">,</span> <span class="n">costs</span>
 </pre></div>
 
     </div>
@@ -350,14 +357,15 @@ w_k = w_k + \Delta w_k
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's examine the fit method that implements the learning rule:</p>
+<p>Let's examine the fit method that implements the Adaline learning rule:</p>
 <ul>
-<li>Create a vector of random weights by using the <code>random_weights</code> function with dimensionality equal to the number of columns in the feature matrix.</li>
-<li>Loop over each row of the feature matrix with <code>for exemplar in range(n_iter)</code></li>
-<li>Compute the inner product between the feature vector for row $i$ and the weight vector by using the <code>predict(xi, w)</code> function</li>
-<li>Compute the difference between the predicted value and the target value times the learning rate with <code>delta = eta * (target - predict(xi, w))</code></li>
-<li>Update the weights by <code>w[1:] += delta * xi</code> and <code>w[0] += delta</code></li>
-<li>We also save the errors for further plotting <code>errors.append(error)</code></li>
+<li>Create a vector of random weights by using the <code>random_weights</code> function with dimensionality equal to the number of columns in the feature matrix</li>
+<li>Loop over the entire dataset <code>n_iter</code> times with <code>for i in range(n_iter)</code></li>
+<li>Compute the inner product between the feature matrix $X$ and the weight vector $w$ by using the <code>net_input(X, w)</code> function</li>
+<li>Compute the difference between the predicted values and the target values for the entire dataset <code>(y - output)</code></li>
+<li>Update the weights in proportion to the learning rate $\eta$ by <code>w[1:] += eta * X.T @ errors</code> and <code>w[0] += eta * errors.sum()</code></li>
+<li>Compute the SSE <code>cost = (errors**2).sum() / 2.0</code></li>
+<li>Save the SSE for each iteration <code>costs.append(cost)</code></li>
 </ul>
 
 </div>
@@ -369,7 +377,7 @@ w_k = w_k + \Delta w_k
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Testing-the-perceptron">Testing the perceptron<a class="anchor-link" href="#Testing-the-perceptron"> </a></h2>
+<h2 id="Testing-the-Adaline">Testing the Adaline<a class="anchor-link" href="#Testing-the-Adaline"> </a></h2>
 </div>
 </div>
 </div>
@@ -379,7 +387,7 @@ w_k = w_k + \Delta w_k
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we will test the implementation by creating a simple example: <strong>classifying figures by their shape</strong>. We'll create two type of figures: <strong>tall-figures</strong> and <strong>wide-figures</strong>. As the name suggest, the tall-figures are figures that are taller than wider, and the wider-figures are figures that are wider than taller.</p>
+<p>We will test the Adaline implementation on the same test that in our previous perceptron: <strong>classifying figures by their shape</strong>. We'll create two type of figures: <strong>tall-figures</strong> and <strong>wide-figures</strong>. As the name suggest, the tall-figures are figures that are taller than wider, and the wider-figures are figures that are wider than taller.</p>
 <p>To accomplish this, we'll sample tall and wide figures at random from a normal distribution by using the following function:</p>
 
 </div>
@@ -525,17 +533,6 @@ target vector:
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>To make this clearer, we can create a plot to visualize each figure</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -563,7 +560,7 @@ target vector:
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/02-rossenblatt-perceptron_28_0.png"
+<img src="../images/features/adaline_29_0.png"
 >
 </div>
 
@@ -640,17 +637,33 @@ y_test.shape: (60,)
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This function takes the training set, training targets, learning rate, and number of iterations. Recall that the Adaline update the weights <strong>after</strong> doing a full pass for the entire training set, whereas the peceptron does it after each individual training exemplar. Therefore, we will pass the entire training set 1 time (<code>n_iter=1</code>)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fit and predict values</span>
-<span class="n">w</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">20</span> <span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">training_values</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="n">eta</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="n">n_iter</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">w</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">y_pred</span>
+
+<span class="n">w</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">training_values</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
 <span class="n">nl</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;vector of weights: </span><span class="si">{w}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;errors at each time step: </span><span class="si">{errors}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cost at each time step: </span><span class="si">{cost}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;predicted value for each case: </span><span class="si">{y_pred}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -665,13 +678,13 @@ y_test.shape: (60,)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>vector of weights: [ 0.01624345  0.84235904 -0.76528073]
+<pre>vector of weights: [ 0.02614765  0.42163998 -0.2764838 ]
 
-errors at each time step: [14, 6, 4, 2, 4, 2, 4, 2, 4, 2, 2, 4, 2, 4, 2, 2, 4, 2, 4, 2]
+cost at each time step: [70.66186787674164]
 
-predicted value for each case: [ 1  1  1 -1 -1 -1  1  1  1 -1  1  1  1  1 -1 -1 -1  1 -1  1  1  1  1  1
-  1 -1  1  1 -1  1  1 -1 -1 -1 -1  1 -1  1  1 -1 -1 -1 -1  1  1  1 -1  1
- -1 -1  1 -1 -1  1  1 -1 -1 -1 -1 -1]
+predicted value for each case: [ 1  1  1 -1 -1 -1  1  1  1 -1  1  1  1  1 -1 -1 -1  1  1  1  1  1  1  1
+  1 -1  1  1  1  1  1 -1 -1 -1 -1  1 -1  1  1 -1 -1 -1 -1  1  1  1 -1  1
+ -1 -1  1 -1  1  1  1 -1 -1 -1 -1 -1]
 
 </pre>
 </div>
@@ -685,70 +698,17 @@ predicted value for each case: [ 1  1  1 -1 -1 -1  1  1  1 -1  1  1  1  1 -1 -1 
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>By printing the prediction error ar each time step we can see that the perceptron predicts each case correctly after 12 training cicles. Let's plot the errors to complement the analysis.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
-
-<span class="k">def</span> <span class="nf">plot_errors</span><span class="p">(</span><span class="n">errors</span><span class="p">):</span>
-    <span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;training-step&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">plot_errors</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../images/features/02-rossenblatt-perceptron_33_0.png"
->
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_correct_predictions</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_correct_predictions</span> <span class="o">/</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">acc</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+    <span class="n">num_correct_predictions</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_correct_predictions</span> <span class="o">/</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+    
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">acc</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test set accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">)</span>
 </pre></div>
 
@@ -763,7 +723,7 @@ predicted value for each case: [ 1  1  1 -1 -1 -1  1  1  1 -1  1  1  1  1 -1 -1 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test set accuracy: 98.33%
+<pre>Test set accuracy: 93.33%
 </pre>
 </div>
 </div>
@@ -771,6 +731,175 @@ predicted value for each case: [ 1  1  1 -1 -1 -1  1  1  1 -1  1  1  1  1 -1 -1 
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We obtain a SSE (cost) equal to <strong>70.7</strong> with a <strong>93.33%</strong> of classification accuracy. Pretty good. Let's try now by passing training set <strong>twice times</strong> by the training loop.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fit and predict values</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">training_values</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">nl</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;vector of weights: </span><span class="si">{w}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cost at each time step: </span><span class="si">{cost}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;predicted value for each case: </span><span class="si">{y_pred}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>vector of weights: [-0.12486643 -1.09800089 -1.08582971]
+
+cost at each time step: [70.66186787674164, 158.3678895769619]
+
+predicted value for each case: [-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+ -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1]
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">acc</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test set accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Test set accuracy: 50.00%
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Something really odd happened: the <strong>SSE went up from 70 to 158.4</strong>, and the <strong>accuracy drop from 93.33% to 50%</strong>. All the test cases has been classified as -1. Maybe we need more training, let's try with 5 loops.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fit and predict values</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">training_values</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">nl</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;vector of weights: </span><span class="si">{w}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cost at each time step: </span><span class="si">{cost}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;predicted value for each case: </span><span class="si">{y_pred}{nl}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">acc</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test set accuracy: </span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>vector of weights: [ 553.09756457 4250.98926834 4373.14848469]
+
+cost at each time step: [70.66186787674164, 158.3678895769619, 20245.308891118297, 5041394.106643893, 1260698508.9443183]
+
+predicted value for each case: [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+
+Test set accuracy: 50.00%
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-exploding-gradient-problem">The exploding gradient problem<a class="anchor-link" href="#The-exploding-gradient-problem"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nothing improved, on the contrary, the SSE is getting bigger with each iteration over the training set. The key to this problem is on the <strong>vector of weights</strong>. Remember that the weights are updated in relation to the <strong>mistmatch between the net ouput of the linear activation function and the class labels</strong>. This means that unless the error is exactly zero, <strong>the weights will continue to grow (or decrease) without limit</strong> after each pass of the training set. As the weights grow,the net output will continue to grow as well, making the error on each iteration bigger. This loop continues <strong>until the weights "explode"</strong> and the network is unable to learn anything meaningful anymore. This is know as the "exploding" gradient problem, which is one of the main limitations on the use of this kind of training algorithms in the context of neural networks.</p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -786,53 +915,18 @@ predicted value for each case: [ 1  1  1 -1 -1 -1  1  1  1 -1  1  1  1  1 -1 -1 
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>As we can see, the perceptron reach ~98% of classification accuracy very fast. Yet, it can't get to 100%. The reason is that perceptron, as linear model, only can perfectly solve 'linearly separable' problems. In the case of our figures dataset, there some small amount of overlap, a few figures that by pure chance are very similar in the 2-D plane of vertical-distance and horizontal-distance. Let's look at the graph again.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">T</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">T</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;tall-figures&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">W</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">W</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;wide-figures&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### TODO ####</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../images/features/02-rossenblatt-perceptron_37_0.png"
->
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -840,18 +934,7 @@ predicted value for each case: [ 1  1  1 -1 -1 -1  1  1  1 -1  1  1  1  1 -1 -1 
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Near the coordinates (vertical=5, horizontal=5) there are a few data points that can't be separated by fitting a line to the plane because their are almost overlapping. If we create a data set where the data points are further separated, we could get a linear model like the perceptron to work and perfectly classify each instance, but those cases are very unusual and limit the scope of problems that can be approached. This limitation later had a huge impact in the use and research of artificial neural networks, particularly after 1969 when Minsky and Papert published their book 'Perceptrons', where they criticize and show the limitations of  Rosenblatt's work. Later on,  research in artificial neural networks would overcome such limitations by the integration of a combination of multiple layers of processing units, non-linear units, and the backpropagation algorithm.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="References-and-Further-Reading">References and Further Reading<a class="anchor-link" href="#References-and-Further-Reading"> </a></h2>
+<h2 id="References">References<a class="anchor-link" href="#References"> </a></h2>
 </div>
 </div>
 </div>
@@ -862,7 +945,12 @@ predicted value for each case: [ 1  1  1 -1 -1 -1  1  1  1 -1  1  1  1  1 -1 -1 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Rosenblatt, F. (1958). The perceptron: a probabilistic model for information storage and organization in the brain. Psychological review, 65(6), 386.</li>
+<li><p>Widrow, B., &amp; Hoff, M. E. (1960). Adaptive switching circuits (No. TR-1553-1). Stanford Univ Ca Stanford Electronics Labs.</p>
+</li>
+<li><p>Widrow, B., &amp; Lehr, M. A. (1990). 30 years of adaptive neural networks: perceptron, madaline, and backpropagation. Proceedings of the IEEE, 78(9), 1415-1442.</p>
+</li>
+<li><p>Widrow, B., &amp; Lehr, M. A. (1995). Perceptrons, Adalines, and backpropagation. The handbook of brain theory and neural networks, 719-724.</p>
+</li>
 </ul>
 <p><strong>For code implementation:</strong></p>
 <ul>

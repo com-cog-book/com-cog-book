@@ -14,7 +14,7 @@
 # - divider: true  # Will insert a divider in the sidebar
 # - header: My Header  # Will insert a header with no link in the sidebar
 
-- header: CMC Book
+- header: NNMOC Book
 
 - url: /intro
   not_numbered: true
@@ -29,19 +29,22 @@
 
 - header: Contents
 
-- url: /features/00-intro
+- url: /features/intro-com-mod-cog
   not_numbered: true
 
-- url: /features/01-MP-artificial-neuron
+- url: /features/roadmap-nn-mod-cog
   not_numbered: true
 
-- url: /features/02-rossenblatt-perceptron
+- url: /features/mp-artificial-neuron
   not_numbered: true
 
-- url: /features/03-adaline
+- url: /features/perceptron
   not_numbered: true
 
-- url: /features/04-multilayer-perceptron
+- url: /features/adaline
+  not_numbered: true
+
+- url: /features/multilayer-perceptron
   not_numbered: true
 
 - divider: true
