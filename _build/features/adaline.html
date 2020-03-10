@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/multilayer-perceptron.html
 suffix: .ipynb
-search: adaline function error perceptron gradient learning weights linear y line training hat wikipedia mean values eta widrow figure e w en org wiki procedure center surface minima difference neural problem br style height px img src images svg width value dataset hoff small squared not change lets generate networks between adaptive network same weight x rate compute descent problems after output point predicted iteration mse step iterations random algorithm predictions threshold vector where expected only errors called instead very code using rule update sum j case parameters its around albatross cant introduced idea means optimization therefore classification class single n
+search: adaline function error perceptron gradient learning weights linear y line training hat wikipedia mean values eta widrow figure e w en org wiki procedure center surface minima difference neural problem br style height px img src images svg width value dataset hoff small squared not change lets generate networks between adaptive network same weight x rate compute descent problems after output point predicted iteration mse step iterations random algorithm predictions threshold vector where expected only errors called instead very albatross code using rule update sum j case parameters its around cant introduced idea means optimization therefore classification class single n
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -778,7 +778,7 @@ $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradien
 <li>Create a vector of random weights by using the <code>random_weights</code> function with dimensionality equal to the number of columns in the feature matrix</li>
 <li>Loop over the entire dataset <code>n_iter</code> times with <code>for pair in range(n_iter)</code></li>
 <li>Compute the inner product between the feature matrix $X$ and the weight vector $w$ by using the <code>net_input(X, w)</code> function</li>
-<li>Compute the gradient of error with respecto to the weights <code>2*(y - output)</code></li>
+<li>Compute the gradient of error with respect to the weights <code>2*(y - output)</code></li>
 <li>Update the weights in proportion to the learning rate $\eta$ by <code>w[1:] += eta*(X.T @ gradient)</code> and <code>w[0] += eta*gradient.sum()</code></li>
 <li>Compute the MSE <code>mse = (((y - output)**2).sum())/len(y)</code></li>
 <li>Save the MSE for each iteration<code>mse_iteration.append(mse)</code></li>
@@ -1383,7 +1383,7 @@ $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradien
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Error-and-gradient-explotion">Error and gradient explotion<a class="anchor-link" href="#Error-and-gradient-explotion"> </a></h3>
+<h3 id="Error-and-gradient-explosion">Error and gradient explosion<a class="anchor-link" href="#Error-and-gradient-explosion"> </a></h3>
 </div>
 </div>
 </div>
@@ -1598,7 +1598,7 @@ $$<p>That's a huge number. With enough data, the network should learn to reduce 
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We explored the linear separability constraint in detail in the perceptron Chapter, therefore we will explore this more briefly here. Let's generate a new dataset, with Albatroos and Condors.</p>
+<p>We explored the linear separability constraint in detail in the perceptron Chapter, therefore we will explore this more briefly here. Let's generate a new dataset, with Albatross and Condors.</p>
 
 </div>
 </div>
