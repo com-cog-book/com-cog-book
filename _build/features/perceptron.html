@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/adaline.html
 suffix: .ipynb
-search: perceptron learning units not response function weights linear stimulus rosenblatt such brain problem area model association error between any set value values network threshold weight triangle problems neural information recognition line photo output albatross shape does example where wikipedia org random classification vector work functions stored lets neurons instead general input z decision eta patterns procedure called images same mean en wiki theta signals delta wingspan able pattern say height width connected w activation later why learn unit y compute rate boundary step principles code memory those figure representation centerfigure center img src s inputs because case based b features
+search: perceptron learning units not response function linear weights stimulus rosenblatt such brain problem area model association error between any set values network line threshold weight triangle problems neural information recognition photo value output albatross functions shape does images example wikipedia org random classification y work procedure called stored lets neurons instead where height width general input decision vector patterns same img src svg mean en wiki theta signals wingspan able pattern say br style px connected activation later why learn unit hat compute eta boundary step principles code memory those figure representation centerfigure center w s because based features training
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -99,7 +99,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center>Figure 1<center/>
 <br style = “line-height:100px;”>
-<img src="images/code-theory-memory.svg" width="50%"/></p>
+<img src="images/perceptron/code-theory-memory.svg" width="80%"/></p>
 
 </div>
 </div>
@@ -192,7 +192,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center>Figure 2<center/>
 <br style = “line-height:100px;”>
-<img src="images/photo-perceptron.svg" width="60%"/></p>
+<img src="images/perceptron/photo-perceptron.svg" width="80%"/></p>
 
 </div>
 </div>
@@ -229,7 +229,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center>Figure 3<center/>
 <br style = “line-height:100px;”>
-<img src="images/photo-perceptron-overlap.svg" width="60%"/></p>
+<img src="images/perceptron/photo-perceptron-overlap.svg" width="80%"/></p>
 
 </div>
 </div>
@@ -270,7 +270,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center>Figure 4<center/>
 <br style = “line-height:100px;”>
-<img src="images/perceptron.svg" width="60%"/></p>
+<img src="images/perceptron/perceptron.svg" width="80%"/></p>
 
 </div>
 </div>
@@ -362,19 +362,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-$$
-z=b+\sum_{i=1}^nw_ix_i=w_0x_0+w_1 x_1+...+w_nx_n
-$$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The $z$ output is used as input for the threshold function $f(z)$. The $b$ constant added at the beginning, the <em>bias term</em>, is a way to simplify learning a good threshold value for the network. Consider the original threshold function, which compares the weighted sum of inputs to a threshold $\theta$:</p>
+<p><br style = “line-height:100px;”>
+<img src="images/perceptron/linear-function-perceptron.svg" width="60%"/></p>
 
 </div>
 </div>
@@ -385,8 +374,19 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>The $z$ output is used as input for the threshold function $f(\hat{y})$. The $b$ constant added at the beginning, the <em>bias term</em>, is a way to simplify learning a good threshold value for the network. Consider the original threshold function, which compares the weighted sum of inputs to a threshold $\theta$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 $$
-z=\sum_iw_ix_i\geq\theta 
+\hat{y}=\sum_iw_ix_i\geq\theta 
 $$
 </div>
 </div>
@@ -409,9 +409,9 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 $$
-z=\sum_iw_ix_i-\theta\geq\theta - \theta 
+\hat{y}=\sum_iw_ix_i-\theta\geq\theta - \theta 
 $$$$
-z=\sum_iw_ix_i-\theta\geq0
+\hat{y}=\sum_iw_ix_i-\theta\geq0
 $$
 </div>
 </div>
@@ -434,7 +434,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 $$
-z=b+\sum_iw_ix_i\geq0
+\hat{y}=b+\sum_iw_ix_i\geq0
 $$
 </div>
 </div>
@@ -477,13 +477,13 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-\begin{equation}
-\hat{y} = f(z) =
+$$
+\hat{y}' =
 \begin{cases}
-+1, &amp; \text{if z &gt; 0} \\
++1, &amp; \text{if } \hat{y} \text{ &gt; 0} \\
 -1, &amp; \text{otherwise}
 \end{cases}
-\end{equation}
+$$
 </div>
 </div>
 </div>
@@ -493,7 +493,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>where $z$ is the output of the linear aggregation function.</p>
+<p>where $\hat{y}$ is the output of the linear function.</p>
 
 </div>
 </div>
@@ -517,25 +517,34 @@ $$
 <p>Here we describe what Rosenblatt (1961) defined as an <em>error-corrective reinforcement</em> learning procedure. This was the version analyzed by Minsky and Papert, which probably explains why it was popularized as the standard perceptron. In his 1961 report, "Principles of Neurodynamics", Rosenblatt describes several reinforcement procedures, like monopolar reinforcement, bipolar reinforcement, gamma reinforcement, and others. The most surprising fact about this learning procedure is that is <strong>guaranteed to find a set of weights that will produce the right answer for every example, as long such a set of weights exists</strong>. Of course, the problem is that for most interesting problems in cognitive science such a set of weights does not exist.  When a classification problem consists of "linearly separable" training cases, the set of weights exist, otherwise, it does not. We will learn about this later.</p>
 <p>The error-corrective learning rule is as follow:</p>
 <ul>
-<li>compute the mismatch between the <em>obtained value</em> and the <em>expected value</em> for the training exemplar</li>
-<li>if the obtained and expected values match, do nothing</li>
-<li>if the obtained and expected values do not match, compute the difference or delta between those values</li>
+<li>compute the mismatch between the <em>predicted value</em> and the <em>expected value</em> for the training exemplar</li>
+<li>if the predicted and expected values match, do nothing</li>
+<li>if the predicted and expected values do not match, compute the difference or delta between those values</li>
 <li>then, use a portion of that value to update the weights of the network</li>
 </ul>
 <p>This can be expresed as:</p>
-\begin{equation*}
-w_{k+1} = w_k + \Delta w_k
-\end{equation*}<p>The $\Delta w_k$ is computed as:</p>
-\begin{equation*}
-\Delta w_k = \eta(y - \hat{y})x_k
-\end{equation*}<p>where:</p>
-<ul>
-<li>$w_k$ is the weight for case $k$</li>
-<li>$\eta$ is the learning rate (0 -1 value)</li>
-<li>$y$ is the actual value ("true class")</li>
-<li>$\hat{y}$ is the predicted value ("predicted class")</li>
-<li>$x_k$ is the vector of inputs for case $k$</li>
-</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br style = “line-height:100px;”>
+<img src="images/perceptron/weight-update.svg" width="60%"/></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Note about the learning rate $\eta$</strong>: the learning rate has the role of facilitating the training process by weighting the delta used to update the weights. This basically means that instead of completely replacing the previous weight with the sum of the weight + $\Delta$, we incorporate a <strong>proportion</strong> of the error into the updating process. This makes the learning process more stable over time.</p>
 <p><strong>Figure 5</strong> shows an schematic representation of the perceptron with the learning procedure.</p>
 
@@ -550,7 +559,7 @@ w_{k+1} = w_k + \Delta w_k
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center>Figure 5<center/>
 <br style = “line-height:100px;”>
-<img src="images/perceptron-math.svg" width="60%"/></p>
+<img src="images/perceptron/perceptron-math.svg" width="80%"/></p>
 
 </div>
 </div>
@@ -585,7 +594,7 @@ w_{k+1} = w_k + \Delta w_k
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center>Figure 6<center/>
 <br style = “line-height:100px;”>
-<img src="images/linear-sep-ex.svg" width="50%"/></p>
+<img src="images/perceptron/linear-sep-ex.svg" width="80%"/></p>
 
 </div>
 </div>
@@ -811,7 +820,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Training-loop---Learning-rule">Training loop - Learning rule<a class="anchor-link" href="#Training-loop---Learning-rule"> </a></h3>
+<h3 id="Training-loop---Learning-procedure">Training loop - Learning procedure<a class="anchor-link" href="#Training-loop---Learning-procedure"> </a></h3>
 </div>
 </div>
 </div>
@@ -1166,10 +1175,10 @@ $$
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-c143e1b73c2a471db78e8d28ae7aaf50"></div>
+<div id="altair-viz-332703749b9646df9ca6f7a03e9a45f7"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-c143e1b73c2a471db78e8d28ae7aaf50");
+    const outputDiv = document.getElementById("altair-viz-332703749b9646df9ca6f7a03e9a45f7");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -1458,7 +1467,18 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Perceptron-limitations:-the-linear-separability-constrain">Perceptron limitations: the linear separability constrain<a class="anchor-link" href="#Perceptron-limitations:-the-linear-separability-constrain"> </a></h2>
+<h2 id="Perceptron-limitations">Perceptron limitations<a class="anchor-link" href="#Perceptron-limitations"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The most notable limitation of the perceptron is the so-called linear separability constraint. We will explore this limination in the next two examples.</p>
+
 </div>
 </div>
 </div>
@@ -1489,7 +1509,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>Figure 6</center><p><img src="images/XOR_linear.png" width="50%"></p>
+<center>Figure 6</center><p><img src="images/perceptron/XOR_linear.svg" width="80%"></p>
 
 </div>
 </div>
@@ -1942,7 +1962,7 @@ $$
 <p>The linear separability constrain is for sure the most notable limitation of the perceptron. Yet, there are a couple of additional issues to be mentioned:</p>
 <ul>
 <li>the use of threshold units. Threshold units describe a step-function. If you are familiar with calculus, you may know that the derivative of a step-functions is either 0 or infinity. That characteristic does not allow for the use of derivatives to adjust the weights of the network, that as it was proven later, is a better way to train very large networks than the error-correction perceptron procedure.</li>
-<li>the use of linear functions to aggreate inputs. Srictly linear function limit the scope of the network to stricly linear decision boundaries. If you remember the XOR problem, a non-linear decision boundary could solve the problem, but such boundary can't be learned with the perceptron.</li>
+<li>the use of linear functions to aggreate inputs. Strictly linear functions limit the scope of the network to linear decision boundaries. If you remember the XOR problem, a non-linear decision boundary could solve the problem, but such boundary can't be learned with the perceptron.</li>
 </ul>
 
 </div>
