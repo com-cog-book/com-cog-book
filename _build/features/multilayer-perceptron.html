@@ -4,22 +4,72 @@ kernel_name: python3
 kernel_path: content/features
 has_widgets: false
 title: |-
-  The Multilayer-Perceptron
+  The Multilayer Perceptron
 pagenum: 8
 prev_page:
   url: /features/adaline.html
 next_page:
   url: /LICENSE.html
 suffix: .ipynb
-search: linear output s units weights perceptron layers layer hidden error compute multilayer w equation z function network begin end problem non neural input not learning x networks backpropagation bmatrix derivatives functions algorithm adaline patterns such before binary features decision step adding multiple take mathrm activity derivative xor y model e threshold pass vector sigmoid value respect between architecture inputs idea cognitive simple boundary case artificial through activation predictions change unit generating single core science processing perceptrons limitations center seems easy solve same why learn possible boundaries using allowing since hand solution generalize unfortunately therefore rumelhart hinton williams new called procedure
+search: perceptron multilayer linear output s units layers weights layer hidden error compute w equation z network not function begin end learning problem non neural algorithm multiple input x networks backpropagation bmatrix derivatives adaline functions patterns such before binary features decision step adding take mathrm activity derivative therefore processing unit xor y model e threshold pass vector sigmoid value respect limitations via rumelhart hinton williams different rule between architecture inputs idea cognitive simple boundary case artificial through activation predictions change problems name because training neuron method instead generating single core science perceptrons center seems easy solve same why learn possible boundaries
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
     <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">The Multilayer-Perceptron</div>
+    <div id="page-info"><div id="page-title">The Multilayer Perceptron</div>
 </div>
     <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learning-objectives">Learning objectives<a class="anchor-link" href="#Learning-objectives"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Understand the principles behind the creation of the multilayer perceptron</li>
+<li>Identify how the multilayer perceptron overcame many of the limitations of previous models</li>
+<li>Expand understanding of learning via gradient descent methods</li>
+<li>Develop a basic code implementation of the multilayer perceptron in Python</li>
+<li>Determine what kind of problems can and can't be solved with the multilayer perceptron</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Historical-and-theoretical-background">Historical and theoretical background<a class="anchor-link" href="#Historical-and-theoretical-background"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Truth be told, "multilayer perceptron" is a terrible name for what Rumelhart, Hinton, and Williams introduced in 1985. It is a bad name because its most fundamental piece, the training algorithm, is completely different to the one in the perceptron. Therefore, a multilayer perceptron it is not simply "a perceptron with multiple layers", as the name may suggest. True, it is a network composed my multiple neuron-like processing units, but not every neuron-like processing unit is a perceptron. If you were to put together a bunch of Rossenblat's perceptron in sequence, you would obtain something very different to what most people today would call a multilayer perceptron.</p>
+<p>Confusing naming aside...</p>
+<p>As the ADALINE, the multilayer perceptron uses a gradient descent method for training, instead of the delta-rule method of the perceptron. Therefore, it is not</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -372,7 +422,7 @@ S(z) =  \frac{\mathrm{1} }{\mathrm{1} + e^{-z} }
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/multilayer-perceptron_16_0.png"
+<img src="../images/features/multilayer-perceptron_20_0.png"
 >
 </div>
 
@@ -598,7 +648,7 @@ target vector:
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/multilayer-perceptron_23_0.png"
+<img src="../images/features/multilayer-perceptron_27_0.png"
 >
 </div>
 
