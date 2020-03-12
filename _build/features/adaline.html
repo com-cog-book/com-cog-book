@@ -206,7 +206,7 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><center>Figure 1<center/>
 <br style = “line-height:100px;”>
-<img src="images/adaline/adaline-math.svg" width="80%"/></p>
+<img src="images/adaline/adaline-math.svg" width="100%"/></p>
 
 </div>
 </div>
@@ -484,10 +484,10 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For conciseness, let's define the error of the network as function $E$.</p>
 $$
-E(\hat{y}) = \frac{1} n\sum_{j=1}^{n}(y_j - \hat{y_j})^2
+E(\hat{y}) = \frac{1} n\sum_{j=1}^{n}(\hat{y_j}-y_j)^2
 $$<p>If we expand $\hat{y_j}$, whe obtain:</p>
 $$
-E(w,x) = \frac{1} n\sum_{j=1}^{n}(y_j - (b+\sum_{i}w_ix_i)_j)^2
+E(w,x) = \frac{1} n\sum_{j=1}^{n}((b+\sum_{i}w_ix_i)_j-y_j)^2
 $$
 </div>
 </div>
@@ -501,7 +501,7 @@ $$
 <p>Now, remember that the only values we can adjust to change $\hat{y}$ are the weights, $w_i$. In differential calculus, taking derivatives means calculating the <em>rate of change of a function with respect to an infinitely small change in an input argument</em>. If "infinitely small" sounds like nonsense to you, for practical purposes, think about it as a very small change, let's say, 0.000001. In our case, it means to compute the rate of change of the $E$ function in response to a very small change in $w$. That is what we call to compute a gradient, that we will call $\Delta$, at a point in the error surface.</p>
 <p>Widrow and Hoff have the idea that instead of computing the gradient for the total mean squared error $E$, they could approximate the gradient's value by computing the partial derivative of the error with respect to the weights on each iteration. Since we are dealing with a single case, let's drop the summation symbols and indices for clarity. The function to derivate becomes:</p>
 $$
-e(w,x) =(y-(b+wx))^2 
+e(w,x) =((b+wx)-y)^2 
 $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradient of $e$:</p>
 
 </div>
@@ -754,9 +754,9 @@ $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradien
     <span class="n">w</span> <span class="o">=</span> <span class="n">random_weights</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">):</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">net_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
-        <span class="n">gradient</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">output</span><span class="p">)</span>
-        <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">eta</span><span class="o">*</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">gradient</span><span class="p">)</span>
-        <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">eta</span><span class="o">*</span><span class="n">gradient</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">output</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">eta</span><span class="o">*</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@-</span><span class="n">gradient</span><span class="p">)</span>
+        <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">eta</span><span class="o">*-</span><span class="n">gradient</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="n">mse</span> <span class="o">=</span> <span class="p">(((</span><span class="n">y</span> <span class="o">-</span> <span class="n">output</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
         <span class="n">mse_iteration</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">w</span><span class="p">,</span> <span class="n">mse_iteration</span>
@@ -1090,10 +1090,10 @@ $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradien
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-d253e542ebb848beabab3fa3cd4c8e4e"></div>
+<div id="altair-viz-263685f6ac024959bd73704443b9145b"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-d253e542ebb848beabab3fa3cd4c8e4e");
+    const outputDiv = document.getElementById("altair-viz-263685f6ac024959bd73704443b9145b");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -1302,10 +1302,10 @@ $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradien
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-a4512463e8574185a9b8971188f15d31"></div>
+<div id="altair-viz-53f60ed0a0e5424aa7062579d2f13f18"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-a4512463e8574185a9b8971188f15d31");
+    const outputDiv = document.getElementById("altair-viz-53f60ed0a0e5424aa7062579d2f13f18");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -1496,10 +1496,10 @@ $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradien
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-df79ccd6e7b04e70a121d5dbe73ee4da"></div>
+<div id="altair-viz-1552f08dc82941f198fcac4a22c7c8a4"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-df79ccd6e7b04e70a121d5dbe73ee4da");
+    const outputDiv = document.getElementById("altair-viz-1552f08dc82941f198fcac4a22c7c8a4");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -1564,7 +1564,7 @@ $$
 $$<p></p>
 <p>Considering that now the error is computed as:</p>
 $$
-error = (1 - 103.01)^2 = 10,406
+error = (103.011 - 1)^2 = 10,406
 $$<p>That's a huge number. With enough data, the network should learn to reduce the $w_i$ until are small enough to make sensible predictions. But, if you start with predictions that are too far-off, the network may become unable to get back on track. <strong>Figure 7</strong> succinctly illustrate this idea.</p>
 
 </div>
@@ -1660,7 +1660,7 @@ $$<p>That's a huge number. With enough data, the network should learn to reduce 
     <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;wingspan-(cm)&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">360</span><span class="p">))),</span>
     <span class="n">url</span><span class="o">=</span><span class="s2">&quot;url&quot;</span>
 <span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
-<span class="n">title</span><span class="o">=</span><span class="s2">&quot;Chart 3&quot;</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Chart 3&quot;</span>
 <span class="p">)</span>
 </pre></div>
 
@@ -1677,10 +1677,10 @@ $$<p>That's a huge number. With enough data, the network should learn to reduce 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-d7aba5bef7884ffaaa0384e805714474"></div>
+<div id="altair-viz-0256ef5ebcab4618b3fd13d459374347"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-d7aba5bef7884ffaaa0384e805714474");
+    const outputDiv = document.getElementById("altair-viz-0256ef5ebcab4618b3fd13d459374347");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
@@ -1843,10 +1843,10 @@ $$<p>That's a huge number. With enough data, the network should learn to reduce 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
-<div id="altair-viz-a66ae9dcf47549c793a8e5afc4666a76"></div>
+<div id="altair-viz-f955ca80c28a46eb9ef5d83e1883dfe4"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
-    const outputDiv = document.getElementById("altair-viz-a66ae9dcf47549c793a8e5afc4666a76");
+    const outputDiv = document.getElementById("altair-viz-f955ca80c28a46eb9ef5d83e1883dfe4");
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",

@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /LICENSE.html
 suffix: .ipynb
-search: perceptron multilayer linear output s units layers weights layer hidden error compute w equation z network not function begin end learning problem non neural algorithm multiple input x networks backpropagation bmatrix derivatives adaline functions patterns such before binary features decision step adding take mathrm activity derivative therefore processing unit xor y model e threshold pass vector sigmoid value respect limitations via rumelhart hinton williams different rule between architecture inputs idea cognitive simple boundary case artificial through activation predictions change problems name because training neuron method instead generating single core science perceptrons center seems easy solve same why learn possible boundaries
+search: neural perceptron units backpropagation layers not s network networks hidden compute multilayer weights w equation z error algorithm book linear layer begin end com cog output learning idea rumelhart multiple function derivatives bmatrix science mathematical hinton research nets processing adaline features learn does take mathrm activity derivative limitations gradient problems cognitive work different change train github io html unit non problem data pass step x vector sigmoid value respect models artificial thought group eventually introduced training between therefore finally capacity representations same predictions e via descent kind came researchers intelligence too took into pdp became important called today threshold such
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -60,9 +60,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Truth be told, "multilayer perceptron" is a terrible name for what Rumelhart, Hinton, and Williams introduced in 1985. It is a bad name because its most fundamental piece, the training algorithm, is completely different to the one in the perceptron. Therefore, a multilayer perceptron it is not simply "a perceptron with multiple layers", as the name may suggest. True, it is a network composed my multiple neuron-like processing units, but not every neuron-like processing unit is a perceptron. If you were to put together a bunch of Rossenblat's perceptron in sequence, you would obtain something very different to what most people today would call a multilayer perceptron.</p>
-<p>Confusing naming aside...</p>
-<p>As the ADALINE, the multilayer perceptron uses a gradient descent method for training, instead of the delta-rule method of the perceptron. Therefore, it is not</p>
+<h3 id="The-origin-of-the-backpropagation-algorithm">The origin of the backpropagation algorithm<a class="anchor-link" href="#The-origin-of-the-backpropagation-algorithm"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Neural networks research came close to become an anecdote in the history of cognitive science by 1980. The vast majority of researchers in cognitive science and artificial intelligence thought that neural nets were a silly idea, they could not possibly work. Minsky and Papert even provided formal proofs about it 1969. Yet, as any person that has been around science long enough knows, there are plenty of stubborn researchers that will continue paddling against the current in pursue of their own ideas.</p>
+<p>David Rumelhart first heard about perceptrons and neural nets in 1963 while in graduate school at Stanford. At the time, he was doing research in mathematical psychology, which although it has lots of equations, is a different field, so he did not pay too much attention to neural nets. It wasn't until the early 70's that Rumelhart took neural nets more seriously. He was in pursuit of a more general framework to understand cognition. Mathematical psychology looked too much like a disconnected mosaic of ad-doc formulas for him. By the late '70s, Rumelhart was working at UC San Diego. He and some colleagues formed a study group about neural networks in cognitive science, that eventually evolved into what is known as the "Parallel Distributed Processing" (PDP) research group. Among the members of that group were Geoffrey Hinton, Terrence Sejnowski, Michael I. Jordan, Jeffrey L. Elman, Francis Crick, and others that eventually became prominent researchers in the neural networks and artificial intelligence fields.</p>
+<p>The original intention of the PDP group was to create a compendium of the most important research on neural networks. Their enterprise eventually evolved into something larger, producing the famous two volumes book where the so-called "backpropagation" algorithm was introduced, along with other important models and ideas. Although most people today associate the invention of the gradient descent algorithm to Hinton, the person that came up the idea was David Rumelhart, and as in most things in science, it was just a small change to a previous idea. Rumelhart and James McClelland (another young professor at UC San Diego) wanted to train a neural network with multiple layers and sigmoidal units, instead of threshold units (as in the perceptron) or linear units (as in the ADALINE), but they did not how to train such a model. Rumelhart knew that you could use gradient descent to train networks with linear units, as Widrow and Hoff did, so he thought that he might as well pretend that sigmoids units were linear units and see what happens. It worked, but he realized that training the model took too many iterations, so the got discouraged and let the idea aside for a while.</p>
+<p>Backpropagation remained dormant for a couple of years until Hinton picked it up again. Rumelhart introduced the idea to Hinton, and Hinton thought it was a terrible idea. I could not work. He knew that backpropagation could not break the symmetry between weights and it will get stuck in local minima. He was passionate about energy-based systems known as <a href="https://www.cs.toronto.edu/~hinton/csc321/readings/boltz321.pdf">Boltzmann machines</a>, which seemed to have nicer mathematical properties. Yet, as he failed to solve more and more problems with Boltzmann machines, decided to try out backpropagation, mostly out of frustration. It worked amazingly well, way better than Boltzmann machines. He got in touch with Rumelhart about their results, and both decided to include a backpropagation chapter in the PDP book, and published <em>Nature</em> paper along with Ronald Williams. The <em>Nature</em> paper became highly visible and the interest in neural networks got reignited for at least the next decade. And that is how backpropagation was introduced: by a mathematical psychologist with no training in computational modeling and a neural net researcher that thought it was a terrible idea.</p>
 
 </div>
 </div>
@@ -73,7 +84,21 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The Perceptron and Adaline algorithms are characterized by generating a <strong>direct mapping between input and output patterns</strong>. Such characteristic is a direct result of their <strong>single-layer architecture</strong>. With one layer, there is no place to generate <strong>intermediate representations</strong> of the inputs before mapping to the outputs. The idea of <strong>generating internal representations of the entities from the outside world is a core notion in cognitive science</strong>: the mind and the brain must do some form of internal processing and reorganization of the information captured from the environment, that allows things like reasoning, language, and complex thinking and behavior more generally. Hence, it is hardly surprising that a single-layer Perceptron or Adaline could not recreate many human cognitive capacities. Marvin Minsky and Seymour Papert devoted an entire book (‘Perceptrons’, 1969) to show the many limitations of Perceptrons as learning algorithms. One classical example of the limitations of single-layer architectures with linear units is the <strong>exclusive-or (XOR) problem</strong> illustrated in <em>Table 1</em> below:</p>
+<h3 id="Overcoming-limitations-and-creating-advantages">Overcoming limitations and creating advantages<a class="anchor-link" href="#Overcoming-limitations-and-creating-advantages"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Truth be told, "multilayer perceptron" is a terrible name for what Rumelhart, Hinton, and Williams introduced in the mid-'80s. It is a bad name because its most fundamental piece, the <em>training algorithm</em>, is completely different from <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Learning-procedure">the one in the perceptron</a>. Therefore, a multilayer perceptron it is not simply "a perceptron with multiple layers", as the name suggests. True, it is a network composed of multiple neuron-like processing units, but not every neuron-like processing unit is a perceptron. If you were to put together a bunch of Rossenblat's perceptron in sequence, you would obtain something very different from what most people today would call a multilayer perceptron.</p>
+<p>Now, the main reason for the resurgence of interest in neural networks was that finally, someone designed an architecture that could overcome the perceptron and ADALINE limitations: <em>to efficiently solve problems requiring non-linear solutions</em>. Problems like the famous <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Example-1:-the-XOR-problem">XOR (exclusive or)</a> function (to learn more about it, see the "Limitations" section in the <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Example-1:-the-XOR-problem">"The Perceptron"</a> and <a href="https://com-cog-book.github.io/com-cog-book/features/adaline.html#ADALINE-limitations">"The ADALINE"</a> chapters).</p>
+<p>Further, a side effect of the capacity to use multiple layers of non-linear units, is that neural networks can form <em>complex internal representations of entities</em>. The perceptron and ADALINE did not have this capacity. They both are linear models, therefore, it doesn't matter how many layers of processing units you concatenate together, the representation learned by the network will be a linear model. You may as well have nonadditional layers and the network eventually would learn the same solution with multiple layers (see <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Why-adding-multiple-layers-of-processing-units-does-not-work">Why adding multiple layers of processing units does not work</a> for an explanation). This capacity is important in so far complex multi-level representation of phenomena is -probably- what the human mind does when solving problems in language, perception, learning, etc.</p>
+<p>Finally, the backpropagation algorithm effectively automates the so-called feature engineering process. If you have ever done data analysis of any kind, you may have come across variables or features that were not in the original data, but that was <em>created by transforming or combining other variables</em>. For instance, you may have variables for income and education, and combine those to create a socio-economic status variable. That variable may have a predictive capacity above and beyond income and education in isolation. With a multi-layer neural network with non-linear units trained with backpropagation, such a <em>transformation process happens automatically</em> in the intermediate or "hidden" layers of the network. Those intermediate representations often aren't hard or impossible to interpret for humans. They may make no sense whatsoever for us, but somehow help to solve the pattern recognition problem at hand, so the network will learn that representation. Does this mean that neural nets learn different representations from the human brain? Maybe, maybe not. The problem is that we don't have direct access to the kind of representations learned by the brain either, and a neural net will seldom be trained with the same data that a human brain is trained in real life.</p>
+<p>The application of the backpropagation algorithm in multilayer neural network architectures was a major breakthrough in the artificial intelligence and cognitive science community, that catalyzed a new generation of research in cognitive science. Nonetheless, it took several decades of advance on computing and data availability before artificial neural networks became the dominant paradigm in the research landscape as it is today. Next, we will explore its mathematical formalization and application.</p>
 
 </div>
 </div>
@@ -84,157 +109,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center>Table 1</center><table>
-<thead><tr>
-<th>Input patterns</th>
-<th>-&gt;</th>
-<th>Output Patterns</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>00</td>
-<td>-&gt;</td>
-<td>0</td>
-</tr>
-<tr>
-<td>01</td>
-<td>-&gt;</td>
-<td>1</td>
-</tr>
-<tr>
-<td>10</td>
-<td>-&gt;</td>
-<td>1</td>
-</tr>
-<tr>
-<td>11</td>
-<td>-&gt;</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The XOR problem seems to be a <strong>trivially easy to solve for humans</strong>: when the input patterns are the same, output 1; when they are different, output 0. There is a simple graphical way to show why a Perceptron can’t learn to solve such a simple problem as shown in the <em>Figure 1</em> below.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Figure 1</center><p><img src="images/XOR_linear.png" width="60%"></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The X-axis and Y-axis reflect the combination of binary features in the XOR problem (0 or 1). When X = Y = 0, the output should be 0, when X = 1 and Y = 0, the output should be 1. The dashed orange line represents the <strong>decision boundary</strong> generated by the Perceptron. The red 1s and 0s represent incorrect classifications; the green 1s and 0s represent correct classifications. As we can see, there is <strong>no way to generate a decision boundary capable of classifying all the instances correctly</strong> (you can keep trying all possible straight lines, and won't work). The box in the lower right corner shows a case where all instances are correctly classified, but to do that we need two boundaries instead of one. There are two possible approaches to tackle this problem: (1) <strong>changing the representation of the problem</strong>, this is to say, generating some sort of transformation of the inputs into a space that is linearly separable, or (2) using a model that is not restricted to linear decision boundaries, i.e., <strong>allowing for non-linearities in the model</strong>.</p>
-<p>Since changing the representation of a problem involves some form of transformation of the inputs, an intuitive first step could be just to modify the input features by hand. For instance, we could try a coding scheme like the one in <em>Table 2</em>. In such a case, we are adding a third dimension that actually allows separating the 1s and 0s with a plane (linear model). Yet, this seems to be a very unsatisfactory solution since it requires <strong>hand-crafting features</strong> which <strong>do not generalize</strong> well beyond toy problems.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center>Table 2</center><table>
-<thead><tr>
-<th>Input patterns</th>
-<th>-&gt;</th>
-<th>Output Patterns</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>000</td>
-<td>-&gt;</td>
-<td>0</td>
-</tr>
-<tr>
-<td>010</td>
-<td>-&gt;</td>
-<td>1</td>
-</tr>
-<tr>
-<td>100</td>
-<td>-&gt;</td>
-<td>1</td>
-</tr>
-<tr>
-<td>111</td>
-<td>-&gt;</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>A second approach could be just adding more layers to the Perceptron. Unfortunately, <strong>no matter how many layers we add, the output of a linear model, is a linear decision boundary</strong>. Therefore, that is not a viable solution. A combination of <strong>adding more layers and allowing for non-linearities</strong> in the model seems to be the way to go, and that was precisely what Rumelhart, Hinton, and Williams did in 1985.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A-new-generation-of-artificial-neural-networks">A new generation of artificial neural networks<a class="anchor-link" href="#A-new-generation-of-artificial-neural-networks"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Even though Rumelhart, Hinton, and Williams called this architecture 'Multilayer-Perceptron', the learning procedure differs significantly from the Perceptron: the Perceptron learning rule operates over a binary threshold function, whereas <strong>the Multilayer-Perceptron operates over the linear or (non-linear) output <em>before</em> passing the output through the binary threshold function</strong> for prediction (in the case of binary classification).</p>
-<p>The Multilayer-Perceptron differs from the Adaline as well. Widrow and Hoff did come up with the idea of creating a multilayer Adaline, known as the MADALINE (Many Adalines). Yet, the Adaline and MADALINE are limited to <strong>strictly linear units</strong>, and strictly linear units are subject to the linear separability constraint. Rumelhart, Hinton, and Williams overcome such limitations by adding <strong>non-linear</strong> processing units to the Multilayer-Perceptron architecture.</p>
-<p>Before going further, it is important to think on <strong>why is that concatenating multiple layers with non-linear units works</strong>. As we saw before, hand-crafted features can help a linear system to solve the XOR problem, but such solutions do not scale up to larger problems. In essence, adding multiple layers of processing units is a way to <strong>automate the so-called feature engineering</strong> process. With multiple layers, now is the <strong>network itself search for new features in an iterative fashion</strong>, and that happens in the hidden layers. Additionally, allowing for non-linear activation functions <strong>expands the set of possible features to be learned</strong> beyond linear boundaries. For instance, in the case of the XOR problem, a non-linear decision boundary could be learned automatically. This is why modern artificial neural networks are considered <strong>universal function approximators</strong>: with enough computation and data, a neural network can approximate functions of any shape.</p>
-<p>Mathematically speaking, the remaining challenge was to find a way to <strong>efficiently adjust the weights across the multiple layers</strong> of the network. One option is to randomly guess values for the weights, then evaluate the error, and repeat until a good enough solution has been found. Unfortunately, this approach is extremely slow and inefficient, particularly for large networks with millions of weights to be adjusted. Fortunately, as we saw with the Adaline, there is a better way: adjusting the weights via <strong>backpropagation</strong>, i.e., the <strong>chain-rule of calculus</strong>. We can use this method, because Multilayer-perceptrons use <strong>continuous functions instead of binary threshold functions</strong>, which are differentiable using the rules of calculus.</p>
-<p>The application of the backpropagation algorithm in multilayer neural network architectures was a major breakthrough in the artificial intelligence and cognitive science community, that catalyzed a new generation of research in cognitive science. Nonetheless, it took several decades of advance on computing and data availability before artificial neural networks became the dominant paradigm in the research landscape as it is today.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Formal-definition-of-the-multilayer-perceptron-with-non-linear-units">Formal definition of the multilayer perceptron with non-linear units<a class="anchor-link" href="#Formal-definition-of-the-multilayer-perceptron-with-non-linear-units"> </a></h2>
+<h2 id="Mathematical-formalization">Mathematical formalization<a class="anchor-link" href="#Mathematical-formalization"> </a></h2>
 </div>
 </div>
 </div>
@@ -255,7 +130,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/forward_neural_net_2_inputs.png" width="60%"></p>
+<p><img src="images/forward_neural_net_2_inputs.png" width="100%"></p>
 
 </div>
 </div>
@@ -422,7 +297,7 @@ S(z) =  \frac{\mathrm{1} }{\mathrm{1} + e^{-z} }
 
 
 <div class="output_png output_subarea output_execute_result">
-<img src="../images/features/multilayer-perceptron_20_0.png"
+<img src="../images/features/multilayer-perceptron_14_0.png"
 >
 </div>
 
@@ -648,7 +523,7 @@ target vector:
 
 
 <div class="output_png output_subarea ">
-<img src="../images/features/multilayer-perceptron_27_0.png"
+<img src="../images/features/multilayer-perceptron_21_0.png"
 >
 </div>
 
@@ -775,6 +650,29 @@ y_test.shape: (60,)
 </div>
 </div>
 
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kelley, H. J. (1960). Gradient theory of optimal flight paths. Ars Journal, 30(10), 947–954.</p>
+<p>Bryson, A. E. (1961). A gradient method for optimizing multi-stage allocation processes. Proc. Harvard Univ. Symposium on Digital Computers and Their Applications, 72.</p>
+<p>Werbos, P. J. (1994). The roots of backpropagation: From ordered derivatives to neural networks and political forecasting (Vol. 1). John Wiley &amp; Sons.</p>
+
+</div>
+</div>
 </div>
 </div>
 
