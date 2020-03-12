@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/multilayer-perceptron.html
 suffix: .ipynb
-search: adaline function error perceptron gradient learning weights linear y line training hat values eta wikipedia mean widrow figure e w en org wiki difference procedure center surface minima neural problem br style height px img src images svg width value dataset between hoff small squared not change lets generate networks adaptive network same weight mse x rate compute descent problems after output point predicted iteration step iterations random algorithm predictions threshold vector where expected only errors called instead very albatross code using rule update sum j case parameters its around cant introduced idea means optimization therefore classification class single n
+search: adaline function error perceptron gradient learning weights linear y line training hat values eta wikipedia mean widrow figure e w en org wiki difference procedure center surface minima neural problem br style height px img src images svg width value dataset between hoff small squared not change lets generate networks adaptive network same weight mse x rate compute descent problems after output vector point predicted iteration step iterations random algorithm predictions threshold where expected only errors called b instead very albatross code using rule update sum j feature case parameters its around cant introduced idea means optimization therefore classification class
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -484,10 +484,10 @@ $$
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For conciseness, let's define the error of the network as function $E$.</p>
 $$
-E(\hat{y}) = \frac{1} n\sum_{j=1}^{n}(\hat{y_j}-y_j)^2
+E(\hat{y}, y) = \frac{1} n\sum_{j=1}^{n}(\hat{y_j}-y_j)^2
 $$<p>If we expand $\hat{y_j}$, whe obtain:</p>
 $$
-E(w,x) = \frac{1} n\sum_{j=1}^{n}((b+\sum_{i}w_ix_i)_j-y_j)^2
+E(b, w, x, y) = \frac{1} n\sum_{j=1}^{n}((b+\sum_{i}w_ix_i)_j-y_j)^2
 $$
 </div>
 </div>
@@ -501,7 +501,7 @@ $$
 <p>Now, remember that the only values we can adjust to change $\hat{y}$ are the weights, $w_i$. In differential calculus, taking derivatives means calculating the <em>rate of change of a function with respect to an infinitely small change in an input argument</em>. If "infinitely small" sounds like nonsense to you, for practical purposes, think about it as a very small change, let's say, 0.000001. In our case, it means to compute the rate of change of the $E$ function in response to a very small change in $w$. That is what we call to compute a gradient, that we will call $\Delta$, at a point in the error surface.</p>
 <p>Widrow and Hoff have the idea that instead of computing the gradient for the total mean squared error $E$, they could approximate the gradient's value by computing the partial derivative of the error with respect to the weights on each iteration. Since we are dealing with a single case, let's drop the summation symbols and indices for clarity. The function to derivate becomes:</p>
 $$
-e(w,x) =((b+wx)-y)^2 
+e(b, w, x, y) =((b+wx)-y)^2 
 $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradient of $e$:</p>
 
 </div>
@@ -525,7 +525,7 @@ $$<p>Now comes the fun part. By applying the chain-rule of calculus, the gradien
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This may come as a surprise to you, but the gradient, in this case, is as simple as <strong>2 times the difference between the expected and predicted value</strong>. Now we know the $\hat{\Delta}$ we need to update the weights at each iteration. Finally, the rule to update the weights says the following: "<strong>change the weight, $w_j$, by a portion, $\eta$, of the calculated negative gradient, $\Delta_j$</strong>". We use the negative of the gradient because we want to go "downhill", otherwise, you will be climbing the surface in the wrong direction. Formally, this is:</p>
+<p>This may come as a surprise to you, but the gradient, in this case, is as simple as <strong>2 times the difference between the expected and predicted value</strong>. Now we know the $\hat{\Delta}$ we need to update the weights at each iteration. Finally, the rule to update the weights says the following: "<strong>change the weight, $w_j$, by a portion, $\eta$, of the calculated negative gradient, $\Delta_j$, times the feature vector $x_j$</strong>". We use the negative of the gradient because we want to go "downhill", otherwise, you will be climbing the surface in the wrong direction. Formally, this is:</p>
 
 </div>
 </div>
