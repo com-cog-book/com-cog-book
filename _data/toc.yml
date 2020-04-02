@@ -46,6 +46,9 @@
 
 - url: /features/multilayer-perceptron
   not_numbered: true
+  
+- url: /features/cov-net
+  not_numbered: true
 
 - divider: true
 
