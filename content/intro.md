@@ -3,8 +3,8 @@
 The goal of this project is to introduce a selection of **canonical neural network models of cognition**. Each section covers the following contents:
 
 - Historical and theoretical background
-- Mathematical definition
-- Code implementation
+- Mathematical formaliation
+- Code implementation in Python
 - Example application
 - Model limitations
 

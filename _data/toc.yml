@@ -32,8 +32,8 @@
 - url: /features/intro-com-mod-cog
   not_numbered: true
 
-- url: /features/roadmap-nn-mod-cog
-  not_numbered: true
+#- url: /features/roadmap-nn-mod-cog
+#  not_numbered: true
 
 - url: /features/mp-artificial-neuron
   not_numbered: true
@@ -48,6 +48,9 @@
   not_numbered: true
   
 - url: /features/cov-net
+  not_numbered: true
+  
+- url: /features/recurrent-net
   not_numbered: true
 
 - divider: true
