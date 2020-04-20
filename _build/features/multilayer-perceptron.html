@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/cov-net.html
 suffix: .ipynb
-search: l partial function w frac neural perceptron times network e error j z layer linear backpropagation networks weights not units learning b multilayer sigmoid activation x com k multi book output derivative layers training figure y does hidden multiple problems cog features bias rumelhart problem matrix need algorithm adaline bmatrix value different where change cost bf compute hinton unit functions input ill vector derivatives r weight gradient html xor img src images svg width end part research idea solve learn brain index point update t jk science processing minima io non same data notation center our begin sigma single biases
+search: l partial function w frac neural e perceptron times network error j linear z backpropagation networks layer units weights learning not multilayer b com sigmoid activation x k book output rumelhart derivative hinton layers training figure y does hidden multiple problems cog features multi bias algorithm problem matrix need where adaline compute bmatrix value different change cost bf idea derivatives unit functions input ill vector r weight research learn minima html xor img src images svg width end part processing get very solve non brain index point update t jk gradient science nets anderson rosenfeld just train model because www
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -34,11 +34,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ol>
-<li>Understand the principles behind the creation of the multilayer perceptron</li>
-<li>Identify how the multilayer perceptron overcame many of the limitations of previous models</li>
+<li>Understand the principles behind the creation of the Multilayer Perceptron</li>
+<li>Identify how the Multilayer Perceptron overcame many of the limitations of previous models</li>
 <li>Expand understanding of learning via gradient descent methods</li>
-<li>Develop a basic code implementation of the multilayer perceptron in Python</li>
-<li>Be aware of the main limitations of multilayer perceptrons</li>
+<li>Develop a basic code implementation of the Multilayer Perceptron in Python</li>
+<li>Be aware of the main limitations of Multilayer perceptrons</li>
 </ol>
 
 </div>
@@ -70,10 +70,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Neural networks research came close to become an anecdote in the history of cognitive science during the '70s. The majority of researchers in cognitive science and artificial intelligence thought that neural nets were a silly idea, they could not possibly work. Minsky and Papert even provided formal proofs about it 1969. Yet, as any person that has been around science long enough knows, there are plenty of stubborn researchers that will continue paddling against the current in pursue of their own ideas.</p>
-<p>David Rumelhart first heard about perceptrons and neural nets in 1963 while in graduate school at Stanford. At the time, he was doing research in mathematical psychology, which although it has lots of equations, is a different field, so he did not pay too much attention to neural nets. It wasn't until the early '70s that Rumelhart took neural nets more seriously. He was in pursuit of a more general framework to understand cognition. Mathematical psychology looked too much like a disconnected mosaic of ad-doc formulas for him. By the late '70s, Rumelhart was working at UC San Diego. He and some colleagues formed a study group about neural networks in cognitive science, that eventually evolved into what is known as the <strong>"Parallel Distributed Processing" (PDP) research group</strong>. Among the members of that group were Geoffrey Hinton, Terrence Sejnowski, Michael I. Jordan, Jeffrey L. Elman, and others that eventually became prominent researchers in the neural networks and artificial intelligence fields.</p>
-<p>The original intention of the PDP group was to create a compendium of the most important research on neural networks. Their enterprise eventually evolved into something larger, producing the famous two volumes book where the so-called <strong>"backpropagation" algorithm was introduced</strong>, along with other important models and ideas. Although most people today associate the invention of the gradient descent algorithm with Hinton, the person that came up the idea was David Rumelhart, and as in most things in science, it was just a small change to a previous idea. Rumelhart and James McClelland (another young professor at UC San Diego at the time) wanted to train a neural network with multiple layers and <strong>sigmoidal units</strong> instead of threshold units (as in the perceptron) or linear units (as in the ADALINE), but they did not how to train such a model. Rumelhart knew that you could use gradient descent to train networks with linear units, as Widrow and Hoff did, so he thought that he might as well <strong>pretend that sigmoids units were linear units and see what happens</strong>. It worked, but he realized that training the model took too many iterations, so the got discouraged and let the idea aside for a while.</p>
-<p>Backpropagation remained dormant for a couple of years until Hinton picked it up again. Rumelhart introduced the idea to Hinton, and <strong>Hinton thought it was a terrible idea</strong>. I could not work. He knew that backpropagation could not break the symmetry between weights and it will get stuck in local minima. He was passionate about energy-based systems known as <a href="https://www.cs.toronto.edu/~hinton/csc321/readings/boltz321.pdf">Boltzmann machines</a>, which seemed to have nicer mathematical properties. Yet, as he failed to solve more and more problems with Boltzmann machines he decided to try out backpropagation, mostly out of frustration. It worked amazingly well, way better than Boltzmann machines. He got in touch with Rumelhart about their results and both decided to include a backpropagation chapter in the PDP book and published <em>Nature</em> paper along with Ronald Williams. The <em>Nature</em> paper became highly visible and <strong>the interest in neural networks got reignited for at least the next decade</strong>. And that is how backpropagation was introduced: by a mathematical psychologist with no training in neural nets modeling and a neural net researcher that thought it was a terrible idea.</p>
+<p>Neural networks research came close to become an anecdote in the history of cognitive science during the '70s. The majority of researchers in cognitive science and artificial intelligence thought that neural nets were a silly idea, they could not possibly work (Anderson &amp; Rosenfeld, 2000). Minsky and Papert (1969) even provided formal proofs about it 1969. Yet, as any person that has been around science long enough knows, there are plenty of stubborn researchers that will continue paddling against the current in pursue of their own ideas.</p>
+<p>David Rumelhart first heard about Perceptrons and neural nets in 1963 while in graduate school at Stanford (Anderson &amp; Rosenfeld, 2000c). At the time, he was doing research in mathematical psychology, which although it has lots of equations, is a different field, so he did not pay too much attention to neural nets. It wasn't until the early '70s that Rumelhart took neural nets more seriously. He was in pursuit of a more general framework to understand cognition. Mathematical psychology looked too much like a disconnected mosaic of ad-doc formulas for him. By the late '70s, Rumelhart was working at UC San Diego. He and some colleagues formed a study group about neural networks in cognitive science, that eventually evolved into what is known as the <strong>"Parallel Distributed Processing" (PDP) research group</strong>. Among the members of that group were Geoffrey Hinton, Terrence Sejnowski, Michael I. Jordan, Jeffrey L. Elman, and others that eventually became prominent researchers in the neural networks and artificial intelligence fields.</p>
+<p>The original intention of the PDP group was to create a compendium of the most important research on neural networks (McClelland et al., 1986). Their enterprise eventually evolved into something larger, producing the famous two volumes book where the so-called <strong>"backpropagation" algorithm was introduced</strong>, along with other important models and ideas. Although most people today associate the invention of the gradient descent algorithm with Hinton, the person that came up the idea was David Rumelhart, and as in most things in science, it was just a small change to a previous idea. Rumelhart and James McClelland (another young professor at UC San Diego at the time) wanted to train a neural network with multiple layers and <strong>sigmoidal units</strong> instead of threshold units (as in the Perceptron) or linear units (as in the ADALINE), but they did not how to train such a model. Rumelhart knew that you could use gradient descent to train networks with linear units, as Widrow and Hoff did, so he thought that he might as well <strong>pretend that sigmoids units were linear units and see what happens</strong>. In Rumelhart's words:</p>
+<blockquote><p>"McClelland and I had done a trick, we thought, and that trick was the following. We wanted to have nonlinear systems that could learn with sigmoidal units. We were worried because we didn't know exactly how to train them. So what we thought was we'd pretend they were linear, and we would compute derivatives as if they where linear, and then we could train them. (...) It was like the Widrow-Hoff model except that we used sigmoids instead of linear output units." (p.278)</p>
+</blockquote>
+<p>Rumelhart ended up implementing this idea. It worked, but he realized that training the model took too many iterations, so the got discouraged and let the idea aside for a while.</p>
+<p>Backpropagation remained dormant for a couple of years until Hinton picked it up again. Rumelhart introduced the idea to Hinton, and <strong>Hinton thought it was a bad idea</strong>. I could not work. He knew that backpropagation could not break the symmetry between weights and it will get stuck in local minima. In Hinton words (Anderson &amp; Rosenfeld, 2000c):</p>
+<blockquote><p>"I first of all explained to him why it woulnd't work, based on an argument in Rosenblatt's book, which showed essentially that it was an algorithm that couldn't break symmetry (...) The next argument I gave him was that it would get stuck in local minima (...) Since you're bounded to get stuck in local minima, it wasn't really worth investigating (backpropagation)" (p. 376)</p>
+</blockquote>
+<p>Hinton tried backpropagation anyways as a test with dissapointing results (Anderson &amp; Rosenfeld, 2000c):</p>
+<blockquote><p>"Then, I tried to use it to get a very obscure effect. I couldn't get this very obscure effect with it, so I lost interest in backpropagation" (p. 376)</p>
+</blockquote>
+<p>Instead, Hinton was passionate about energy-based systems known as <a href="https://www.cs.toronto.edu/~hinton/csc321/readings/boltz321.pdf">Boltzmann machines</a>, which seemed to have nicer mathematical properties. Yet, as he failed to solve more and more problems with Boltzmann machines he decided to try out backpropagation, mostly out of frustration. On Hinton's words (Anderson &amp; Rosenfeld, 2000c): "In despair, I thought, "Well, maybe, why don't I just program up that old Rumelhart's idea, and see how well that works..." (p. 377). It worked amazingly well, way better than Boltzmann machines. He got in touch with Rumelhart about their results and both decided to include a backpropagation chapter in the PDP book and published <em>Nature</em> paper along with Ronald Williams. The <em>Nature</em> paper became highly visible and <strong>the interest in neural networks got reignited for at least the next decade</strong>. And that is how backpropagation was introduced: by a mathematical psychologist with no training in neural nets modeling and a neural net researcher that thought it was a terrible idea.</p>
+<p><strong>Note</strong>: for an extended review this history see Rumelhart's and Hinton interviews in Anderson &amp; Rosenfeld (2000) text, the Hinton's <a href="https://www.youtube.com/watch?v=2fRnHVVLf1Y&amp;list=PLiPvV5TNogxKKwvKb1RKwkq2hm7ZvpHz0">Neural Networks course</a>, this <a href="https://www.youtube.com/watch?v=-eyhCTvrEtE">interview</a> to Hinton about his biography, and this interview to <a href="https://www.youtube.com/watch?v=4Zfwsl7uyQM">Jay McClelland</a></p>
 
 </div>
 </div>
@@ -94,10 +104,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Truth be told, "multilayer perceptron" is a terrible name for what Rumelhart, Hinton, and Williams introduced in the mid-'80s. It is a bad name because its most fundamental piece, the <em>training algorithm</em>, is completely different from <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Learning-procedure">the one in the perceptron</a>. Therefore, a multilayer perceptron it is not simply "a perceptron with multiple layers" as the name suggests. True, it is a network composed of multiple neuron-like processing units but not every neuron-like processing unit is a perceptron. If you were to put together a bunch of Rossenblat's perceptron in sequence, you would obtain something very different from what most people today would call a multilayer perceptron. If anything, the multi-layer perceptron is more similar to the Widrow and Hoff ADALINE, and in fact, Widrow and Hoff did try multi-layer ADALINEs, known as MADALINEs (i.e., many ADALINEs), but they did not incorporate non-linear functions.</p>
-<p>Now, the main reason for the resurgence of interest in neural networks was that finally someone designed an architecture that could overcome the perceptron and ADALINE limitations: <strong>to solve problems requiring non-linear solutions</strong>. Problems like the famous <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Example-1:-the-XOR-problem">XOR (exclusive or)</a> function (to learn more about it, see the "Limitations" section in the <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Example-1:-the-XOR-problem">"The Perceptron"</a> and <a href="https://com-cog-book.github.io/com-cog-book/features/adaline.html#ADALINE-limitations">"The ADALINE"</a> chapters).</p>
-<p>Further, a side effect of the capacity to use multiple layers of non-linear units is that neural networks can form <strong>complex internal representations of entities</strong>. The perceptron and ADALINE did not have this capacity. They both are linear models, therefore, it doesn't matter how many layers of processing units you concatenate together, the representation learned by the network will be a linear model. You may as well dropped all the extra layers and the network eventually would learn the same solution that with multiple layers (see <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Why-adding-multiple-layers-of-processing-units-does-not-work">Why adding multiple layers of processing units does not work</a> for an explanation). This capacity is important in so far <strong>complex multi-level representation of phenomena</strong> is -probably- what the human mind does when solving problems in language, perception, learning, etc.</p>
-<p>Finally, the backpropagation algorithm effectively <strong>automates the so-called "feature engineering" process</strong>. If you have ever done data analysis of any kind, you may have come across variables or features that were not in the original data but was <strong>created by transforming or combining other variables</strong>. For instance, you may have variables for income and education, and combine those to create a socio-economic status variable. That variable may have a predictive capacity above and beyond income and education in isolation. With a multilayer neural network with non-linear units trained with backpropagatio such a <em>transformation process happens automatically</em> in the intermediate or <strong>"hidden" layers of the network</strong>. Those intermediate representations often are hard or impossible to interpret for humans. They may make no sense whatsoever for us but somehow help to solve the pattern recognition problem at hand, so the network will learn that representation. Does this mean that neural nets learn different representations from the human brain? Maybe, maybe not. The problem is that we don't have direct access to the kind of representations learned by the brain either, and a neural net will seldom be trained with the same data that a human brain is trained in real life.</p>
+<p>Truth be told, "Multilayer Perceptron" is a terrible name for what Rumelhart, Hinton, and Williams introduced in the mid-'80s. It is a bad name because its most fundamental piece, the <em>training algorithm</em>, is completely different from <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Learning-procedure">the one in the Perceptron</a>. Therefore, a Multilayer Perceptron it is not simply "a Perceptron with multiple layers" as the name suggests. True, it is a network composed of multiple neuron-like processing units but not every neuron-like processing unit is a Perceptron. If you were to put together a bunch of Rossenblat's Perceptron in sequence, you would obtain something very different from what most people today would call a Multilayer Perceptron. If anything, the Multilayer Perceptron is more similar to the Widrow and Hoff ADALINE (as Rumelhart acknowledged). In fact, Widrow and Hoff did try multilayer ADALINEs, known as MADALINEs (i.e., many ADALINEs), but they did not incorporate non-linear functions.</p>
+<p>Now, the main reason for the resurgence of interest in neural networks was that finally someone designed an architecture that could overcome the Perceptron and ADALINE limitations: <strong>to solve problems requiring non-linear solutions</strong>. Problems like the famous <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Example-1:-the-XOR-problem">XOR (exclusive or)</a> function (to learn more about it, see the "Limitations" section in the <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Example-1:-the-XOR-problem">"The Perceptron"</a> and <a href="https://com-cog-book.github.io/com-cog-book/features/adaline.html#ADALINE-limitations">"The ADALINE"</a> chapters).</p>
+<p>Further, a side effect of the capacity to use multiple layers of non-linear units is that neural networks can form <strong>complex internal representations of entities</strong>. The Perceptron and ADALINE did not have this capacity. They both are linear models, therefore, it doesn't matter how many layers of processing units you concatenate together, the representation learned by the network will be a linear model. You may as well dropped all the extra layers and the network eventually would learn the same solution that with multiple layers (see <a href="https://com-cog-book.github.io/com-cog-book/features/perceptron.html#Why-adding-multiple-layers-of-processing-units-does-not-work">Why adding multiple layers of processing units does not work</a> for an explanation). This capacity is important in so far <strong>complex multi-level representation of phenomena</strong> is -probably- what the human mind does when solving problems in language, perception, learning, etc.</p>
+<p>Finally, the backpropagation algorithm effectively <strong>automates the so-called "feature engineering" process</strong>. If you have ever done data analysis of any kind, you may have come across variables or features that were not in the original data but was <strong>created by transforming or combining other variables</strong>. For instance, you may have variables for income and education, and combine those to create a socio-economic status variable. That variable may have a predictive capacity above and beyond income and education in isolation. With a multilayer neural network with non-linear units trained with backpropagation such a <em>transformation process happens automatically</em> in the intermediate or <strong>"hidden" layers of the network</strong>. Those intermediate representations often are hard or impossible to interpret for humans. They may make no sense whatsoever for us but somehow help to solve the pattern recognition problem at hand, so the network will learn that representation. Does this mean that neural nets learn different representations from the human brain? Maybe, maybe not. The problem is that we don't have direct access to the kind of representations learned by the brain either, and a neural net will seldom be trained with the same data that a human brain is trained in real life.</p>
 <p>The application of the backpropagation algorithm in multilayer neural network architectures was a major breakthrough in the artificial intelligence and cognitive science community, that catalyzed a new generation of research in cognitive science. Nonetheless, it took several decades of advance on computing and data availability before artificial neural networks became the dominant paradigm in the research landscape as it is today. Next, we will explore its mathematical formalization and application.</p>
 
 </div>
@@ -119,13 +129,13 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The classical multilayer perceptron as introduced by Rumelhart, Hinton, and Williams, can be described by:</p>
+<p>The classical Multilayer Perceptron as introduced by Rumelhart, Hinton, and Williams, can be described by:</p>
 <ul>
-<li>a <em>linear function</em> that aggregates the input values</li>
-<li>a <em>sigmoid function</em>, also called <em>activation function</em></li>
-<li>a <em>threshold function</em> for classification process, and an <em>identity function</em> for regression problems</li>
-<li>a <em>loss or cost</em> function that computes the overall error of the network</li>
-<li>a <em>learning procedure</em> to adjust the weights of the network, i.e., the so-called <em>backpropagation</em> algorithm</li>
+<li>a linear function that aggregates the input values</li>
+<li>a sigmoid function, also called <em>activation function</em></li>
+<li>a threshold function for classification process, and an <em>identity function</em> for regression problems</li>
+<li>a loss or cost function that computes the overall error of the network</li>
+<li>a learning procedure to adjust the weights of the network, i.e., the so-called <em>backpropagation</em> algorithm</li>
 </ul>
 
 </div>
@@ -147,7 +157,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The linear aggregation function is the same as in the perceptron and the ADALINE. But, with a couple of differences that change the notation: now we are dealing multiple layers and processing units. The conventional way to represent this is with <strong>linear algebra notation</strong>. This is not a course of linear algebra, reason I won't cover the mathematics in detail. However, I'll introduce enough concepts and notation to understand the fundamental operations involved in the neural network calculation. The most important aspect is to understand what is a <em>matrix</em>, a <em>vector</em>, and how to <em>multiply</em> them together.</p>
+<p>The linear aggregation function is the same as in the Perceptron and the ADALINE. But, with a couple of differences that change the notation: now we are dealing multiple layers and processing units. The conventional way to represent this is with <strong>linear algebra notation</strong>. This is not a course of linear algebra, so I won't cover the mathematics in detail. However, I'll introduce enough concepts and notation to understand the fundamental operations involved in the neural network calculation. The most important aspect is to understand what is a <em>matrix</em>, a <em>vector</em>, and how to <em>multiply</em> them together.</p>
 <p>A <strong>vector</strong> is a collection of <em>ordered numbers</em> or <em>scalars</em>. If you are familiar with data analysis, a vector is like a column or row in a dataframe. If you are familiar with programming, a vector is like an array or a list. A generic Vector $\bf{x}$ is defined as:</p>
 
 </div>
@@ -727,7 +737,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the <a href="https://com-cog-book.github.io/com-cog-book/features/adaline.html#The-ADALINE-error-surface">ADALINE chapter</a> I introduced the ideas of <strong>searching for a set of weights that minimize the error via gradient descent</strong>, and the difference between <strong>convex and non-convex optimization</strong>. If you have not read that section, I'll encourage you to read that first. Otherwise, the important part is to remember that since we are introducing nonlinearities in the network the error surface of the multilayer perceptron is <a href="https://arxiv.org/pdf/1712.07897.pdf">non-convex</a>. This means that there are multiple "valleys" with "local minima", along with the "global minima", and that backpropagation <strong>is not guaranteed to find the global minima</strong>. Remember that the "global minima" is the point where the error (i.e., the value of the cost function) is at its minimum, whereas the "local minima" is the point of minimum error for a sub-section of the error surface. <strong>Figure 3</strong> illustrates these concepts on a 3D surface. The vertical axis represents the error of the surface, and the other two axes represent different combinations of weights for the network. In the figure, you can observe how different combinations of weights produce different values of error.</p>
+<p>In the <a href="https://com-cog-book.github.io/com-cog-book/features/adaline.html#The-ADALINE-error-surface">ADALINE chapter</a> I introduced the ideas of <strong>searching for a set of weights that minimize the error via gradient descent</strong>, and the difference between <strong>convex and non-convex optimization</strong>. If you have not read that section, I'll encourage you to read that first. Otherwise, the important part is to remember that since we are introducing nonlinearities in the network the error surface of the Multilayer Perceptron is non-convex <a href="https://arxiv.org/pdf/1712.07897.pdf">(Jain &amp; Kar, 2017)</a>. This means that there are multiple "valleys" with "local minima", along with the "global minima", and that backpropagation <strong>is not guaranteed to find the global minima</strong>. Remember that the "global minima" is the point where the error (i.e., the value of the cost function) is at its minimum, whereas the "local minima" is the point of minimum error for a sub-section of the error surface. <strong>Figure 3</strong> illustrates these concepts on a 3D surface. The vertical axis represents the error of the surface, and the other two axes represent different combinations of weights for the network. In the figure, you can observe how different combinations of weights produce different values of error.</p>
 
 </div>
 </div>
@@ -793,7 +803,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Backpropagation-for-single-unit-multilayer-perceptron">Backpropagation for single unit multilayer perceptron<a class="anchor-link" href="#Backpropagation-for-single-unit-multilayer-perceptron"> </a></h4>
+<h4 id="Backpropagation-for-single-unit-Multilayer-Perceptron">Backpropagation for single unit Multilayer Perceptron<a class="anchor-link" href="#Backpropagation-for-single-unit-Multilayer-Perceptron"> </a></h4>
 </div>
 </div>
 </div>
@@ -1114,7 +1124,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Backpropagation-for-multiple-unit-multilayer-perceptron">Backpropagation for multiple unit multilayer perceptron<a class="anchor-link" href="#Backpropagation-for-multiple-unit-multilayer-perceptron"> </a></h4>
+<h4 id="Backpropagation-for-multiple-unit-Multilayer-Perceptron">Backpropagation for multiple unit Multilayer Perceptron<a class="anchor-link" href="#Backpropagation-for-multiple-unit-Multilayer-Perceptron"> </a></h4>
 </div>
 </div>
 </div>
@@ -1490,7 +1500,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We will <strong>implement a multilayer-perceptron with one hidden layer by translating all our equations into code</strong>. One important thing to consider is that we won't implement all the loops that the summation notation implies. Loops are known for being highly inefficient computationally, so we want to avoid them. Fortunately, we can use <strong>matrix operations to achieve the exact same result</strong>. This means that all the computations will be "vectorized". If you are not familiar with <a href="https://www.geeksforgeeks.org/vectorization-in-python/">vectorization</a> you just need to know that instead of looping over each row in our training dataset we compute the outcome for each row all at once using linear algebra operations. This makes computation in neural networks highly efficient compared to using loops. To do this, I'll only use <code>NumPy</code> which is the most popular library for matrix operations and linear algebra in Python.</p>
+<p>We will <strong>implement a Multilayer Perceptron with one hidden layer by translating all our equations into code</strong>. One important thing to consider is that we won't implement all the loops that the summation notation implies. Loops are known for being highly inefficient computationally, so we want to avoid them. Fortunately, we can use <strong>matrix operations to achieve the exact same result</strong>. This means that all the computations will be "vectorized". If you are not familiar with <a href="https://www.geeksforgeeks.org/vectorization-in-python/">vectorization</a> you just need to know that instead of looping over each row in our training dataset we compute the outcome for each row all at once using linear algebra operations. This makes computation in neural networks highly efficient compared to using loops. To do this, I'll only use <code>NumPy</code> which is the most popular library for matrix operations and linear algebra in Python.</p>
 <p>Remember that we need to computer the following operations in order:</p>
 <ol>
 <li>linear function aggregation $z$</li>
@@ -1777,7 +1787,7 @@ $$
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_neurons</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_output</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Multi-layer perceptron trained with backpropagation</span>
+    <span class="sd">&quot;&quot;&quot;Multilayer Perceptron trained with backpropagation</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
 <span class="sd">        X (ndarray): matrix of features</span>
@@ -1877,7 +1887,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If you have read this and previous chapters, you should know by now that one of the problems that brought about the "demise" of the interest in neural network models was the infamous XOR (exclusive or) problem. This was just one example of a large class of problems that can't be solved with linear models as the perceptron and ADALINE. As an act of redemption for neural networks from this criticism, we will solve the XOR problem using our implementation of the multilayer-perceptron.</p>
+<p>If you have read this and previous chapters, you should know by now that one of the problems that brought about the "demise" of the interest in neural network models was the infamous XOR (exclusive or) problem. This was just one example of a large class of problems that can't be solved with linear models as the Perceptron and ADALINE. As an act of redemption for neural networks from this criticism, we will solve the XOR problem using our implementation of the Multilayer Perceptron.</p>
 
 </div>
 </div>
@@ -1982,7 +1992,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Multilayer-perceptron-training">Multilayer perceptron training<a class="anchor-link" href="#Multilayer-perceptron-training"> </a></h3>
+<h3 id="Multilayer-Perceptron-training">Multilayer Perceptron training<a class="anchor-link" href="#Multilayer-Perceptron-training"> </a></h3>
 </div>
 </div>
 </div>
@@ -2020,7 +2030,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Multilayer-perceptron-predictions-and-error">Multilayer perceptron predictions and error<a class="anchor-link" href="#Multilayer-perceptron-predictions-and-error"> </a></h3>
+<h3 id="Multilayer-Perceptron-predictions-and-error">Multilayer Perceptron predictions and error<a class="anchor-link" href="#Multilayer-Perceptron-predictions-and-error"> </a></h3>
 </div>
 </div>
 </div>
@@ -2193,7 +2203,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Application:-multilayer-perceptron-with-Keras">Application: multilayer perceptron with Keras<a class="anchor-link" href="#Application:-multilayer-perceptron-with-Keras"> </a></h2>
+<h2 id="Application:-Multilayer-Perceptron-with-Keras">Application: Multilayer Perceptron with Keras<a class="anchor-link" href="#Application:-Multilayer-Perceptron-with-Keras"> </a></h2>
 </div>
 </div>
 </div>
@@ -2203,9 +2213,9 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The reason we implemented our own multilayer perceptron was for <strong>pedagogical purposes</strong>. Richard Feynman once famously said: "<strong>What I cannot create I do not understand</strong>", which is probably an exaggeration but I personally agree with the principle of "learning by creating". Learning to build neural networks is similar to learn math (maybe because they are <em>literally</em> math): yes, you'll end up using a calculator to compute almost everything, yet, we still do the exercise of computing systems of equations by hand when learning algebra. There is a deeper level of understanding that is unlocked when you actually get to build something from scratch.</p>
+<p>The reason we implemented our own Multilayer Perceptron was for <strong>pedagogical purposes</strong>. Richard Feynman once famously said: "<strong>What I cannot create I do not understand</strong>", which is probably an exaggeration but I personally agree with the principle of "learning by creating". Learning to build neural networks is similar to learn math (maybe because they are <em>literally</em> math): yes, you'll end up using a calculator to compute almost everything, yet, we still do the exercise of computing systems of equations by hand when learning algebra. There is a deeper level of understanding that is unlocked when you actually get to build something from scratch.</p>
 <p>Nonetheless, there is no need to go through this process every time. Nowadays, we have access to very good libraries to build neural networks. <a href="https://keras.io/">Keras</a> is a popular Python library for this. Keras main strength is the simplicity and elegance of its interface (sometimes people call it "API"). Keras hides most of the computations to the users and provides a way to define neural networks that match with what you would normally do when drawing a diagram. There are many other libraries you may hear about (Tensorflow, PyTorch, MXNet, Caffe, etc.) but I'll use this one because is the best for beginners in my opinion.</p>
-<p>Next, we will build another multi-layer perceptron to solve the same XOR Problem and to illustrate how simple is the process with Keras.</p>
+<p>Next, we will build another Multilayer Perceptron to solve the same XOR Problem and to illustrate how simple is the process with Keras.</p>
 <p>This time, I'll put together a network with the following characteristics:</p>
 <ul>
 <li><strong>Input layer</strong> with 2 neurons (i.e., the two features).</li>
@@ -2465,106 +2475,6 @@ $$
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.utils</span> <span class="kn">import</span> <span class="n">plot_model</span>
-<span class="n">plot_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">to_file</span><span class="o">=</span><span class="s1">&#39;model.png&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">~/Desktop/projects/nn-mod-cog/venv/lib/python3.6/site-packages/pydot.py</span> in <span class="ansi-cyan-fg">create</span><span class="ansi-blue-fg">(self, prog, format, encoding)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1914</span>                 arguments<span class="ansi-blue-fg">=</span>arguments<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">-&gt; 1915</span><span class="ansi-red-fg">                 </span>working_dir<span class="ansi-blue-fg">=</span>tmp_dir<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   1916</span>             )
-
-<span class="ansi-green-fg">~/Desktop/projects/nn-mod-cog/venv/lib/python3.6/site-packages/pydot.py</span> in <span class="ansi-cyan-fg">call_graphviz</span><span class="ansi-blue-fg">(program, arguments, working_dir, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    135</span>         stdout<span class="ansi-blue-fg">=</span>subprocess<span class="ansi-blue-fg">.</span>PIPE<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">--&gt; 136</span><span class="ansi-red-fg">         </span><span class="ansi-blue-fg">**</span>kwargs
-<span class="ansi-green-intense-fg ansi-bold">    137</span>     )
-
-<span class="ansi-green-fg">~/.pyenv/versions/3.6.10/lib/python3.6/subprocess.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, encoding, errors)</span>
-<span class="ansi-green-intense-fg ansi-bold">    728</span>                                 errread<span class="ansi-blue-fg">,</span> errwrite<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">--&gt; 729</span><span class="ansi-red-fg">                                 restore_signals, start_new_session)
-</span><span class="ansi-green-intense-fg ansi-bold">    730</span>         <span class="ansi-green-fg">except</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/.pyenv/versions/3.6.10/lib/python3.6/subprocess.py</span> in <span class="ansi-cyan-fg">_execute_child</span><span class="ansi-blue-fg">(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, start_new_session)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1363</span>                             err_msg <span class="ansi-blue-fg">+=</span> <span class="ansi-blue-fg">&#39;: &#39;</span> <span class="ansi-blue-fg">+</span> repr<span class="ansi-blue-fg">(</span>err_filename<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">-&gt; 1364</span><span class="ansi-red-fg">                     </span><span class="ansi-green-fg">raise</span> child_exception_type<span class="ansi-blue-fg">(</span>errno_num<span class="ansi-blue-fg">,</span> err_msg<span class="ansi-blue-fg">,</span> err_filename<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1365</span>                 <span class="ansi-green-fg">raise</span> child_exception_type<span class="ansi-blue-fg">(</span>err_msg<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;dot&#39;: &#39;dot&#39;
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">~/Desktop/projects/nn-mod-cog/venv/lib/python3.6/site-packages/keras/utils/vis_utils.py</span> in <span class="ansi-cyan-fg">_check_pydot</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     27</span>         <span class="ansi-red-fg"># to check the pydot/graphviz installation.</span>
-<span class="ansi-green-fg">---&gt; 28</span><span class="ansi-red-fg">         </span>pydot<span class="ansi-blue-fg">.</span>Dot<span class="ansi-blue-fg">.</span>create<span class="ansi-blue-fg">(</span>pydot<span class="ansi-blue-fg">.</span>Dot<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     29</span>     <span class="ansi-green-fg">except</span> OSError<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/Desktop/projects/nn-mod-cog/venv/lib/python3.6/site-packages/pydot.py</span> in <span class="ansi-cyan-fg">create</span><span class="ansi-blue-fg">(self, prog, format, encoding)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1921</span>                     prog=prog)
-<span class="ansi-green-fg">-&gt; 1922</span><span class="ansi-red-fg">                 </span><span class="ansi-green-fg">raise</span> OSError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1923</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] &#34;dot&#34; not found in path.
-
-During handling of the above exception, another exception occurred:
-
-<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-19-a70009143d02&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">from</span> keras<span class="ansi-blue-fg">.</span>utils <span class="ansi-green-fg">import</span> plot_model
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>plot_model<span class="ansi-blue-fg">(</span>model<span class="ansi-blue-fg">,</span> to_file<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;model.png&#39;</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/Desktop/projects/nn-mod-cog/venv/lib/python3.6/site-packages/keras/utils/vis_utils.py</span> in <span class="ansi-cyan-fg">plot_model</span><span class="ansi-blue-fg">(model, to_file, show_shapes, show_layer_names, rankdir, expand_nested, dpi)</span>
-<span class="ansi-green-intense-fg ansi-bold">    238</span>     &#34;&#34;&#34;
-<span class="ansi-green-intense-fg ansi-bold">    239</span>     dot = model_to_dot(model, show_shapes, show_layer_names, rankdir,
-<span class="ansi-green-fg">--&gt; 240</span><span class="ansi-red-fg">                        expand_nested, dpi)
-</span><span class="ansi-green-intense-fg ansi-bold">    241</span>     _<span class="ansi-blue-fg">,</span> extension <span class="ansi-blue-fg">=</span> os<span class="ansi-blue-fg">.</span>path<span class="ansi-blue-fg">.</span>splitext<span class="ansi-blue-fg">(</span>to_file<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    242</span>     <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> extension<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/Desktop/projects/nn-mod-cog/venv/lib/python3.6/site-packages/keras/utils/vis_utils.py</span> in <span class="ansi-cyan-fg">model_to_dot</span><span class="ansi-blue-fg">(model, show_shapes, show_layer_names, rankdir, expand_nested, dpi, subgraph)</span>
-<span class="ansi-green-intense-fg ansi-bold">     77</span>     <span class="ansi-green-fg">from</span> <span class="ansi-blue-fg">.</span><span class="ansi-blue-fg">.</span>models <span class="ansi-green-fg">import</span> Sequential
-<span class="ansi-green-intense-fg ansi-bold">     78</span> 
-<span class="ansi-green-fg">---&gt; 79</span><span class="ansi-red-fg">     </span>_check_pydot<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     80</span>     <span class="ansi-green-fg">if</span> subgraph<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     81</span>         dot <span class="ansi-blue-fg">=</span> pydot<span class="ansi-blue-fg">.</span>Cluster<span class="ansi-blue-fg">(</span>style<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;dashed&#39;</span><span class="ansi-blue-fg">,</span> graph_name<span class="ansi-blue-fg">=</span>model<span class="ansi-blue-fg">.</span>name<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/Desktop/projects/nn-mod-cog/venv/lib/python3.6/site-packages/keras/utils/vis_utils.py</span> in <span class="ansi-cyan-fg">_check_pydot</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     29</span>     <span class="ansi-green-fg">except</span> OSError<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     30</span>         raise OSError(
-<span class="ansi-green-fg">---&gt; 31</span><span class="ansi-red-fg">             </span><span class="ansi-blue-fg">&#39;`pydot` failed to call GraphViz.&#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">     32</span>             <span class="ansi-blue-fg">&#39;Please install GraphViz (https://www.graphviz.org/) &#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">     33</span>             &#39;and ensure that its executables are in the $PATH.&#39;)
-
-<span class="ansi-red-fg">OSError</span>: `pydot` failed to call GraphViz.Please install GraphViz (https://www.graphviz.org/) and ensure that its executables are in the $PATH.</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Again, we reached 100% of accuracy.</p>
@@ -2578,7 +2488,7 @@ During handling of the above exception, another exception occurred:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Multilayer-perceptron-limitations">Multilayer perceptron limitations<a class="anchor-link" href="#Multilayer-perceptron-limitations"> </a></h2>
+<h2 id="Multilayer-Perceptron-limitations">Multilayer Perceptron limitations<a class="anchor-link" href="#Multilayer-Perceptron-limitations"> </a></h2>
 </div>
 </div>
 </div>
@@ -2588,7 +2498,7 @@ During handling of the above exception, another exception occurred:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Multilayer perceptrons (and multilayer neural networks more) generally have many limitations worth mentioning. I will focus on a few that are more evident at this point and I'll introduce more complex issues in later chapters.</p>
+<p>Multilayer Perceptrons (and multilayer neural networks more) generally have many limitations worth mentioning. I will focus on a few that are more evident at this point and I'll introduce more complex issues in later chapters.</p>
 
 </div>
 </div>
@@ -2609,7 +2519,7 @@ During handling of the above exception, another exception occurred:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first and more obvious limitation of the multilayer perceptron is <strong>training time</strong>. It takes an awful lot of iterations for the algorithm to learn to solve a very simple logic problem like the XOR. <strong>This is not an exception but the norm</strong>. Most neural networks you'd encounter in the wild nowadays need from hundreds up to thousands of iterations to reach their top-level accuracy. This has been a common point of criticism, particularly because human learning seems to be way more sample efficient.</p>
+<p>The first and more obvious limitation of the Multilayer Perceptron is <strong>training time</strong>. It takes an awful lot of iterations for the algorithm to learn to solve a very simple logic problem like the XOR. <strong>This is not an exception but the norm</strong>. Most neural networks you'd encounter in the wild nowadays need from hundreds up to thousands of iterations to reach their top-level accuracy. This has been a common point of criticism, particularly because human learning seems to be way more sample efficient.</p>
 <p>There are multiple answers to the training time problem. A first argument has to do with raw <strong>processing capacity</strong>. It is seemingly obvious that a neural network with 1 hidden layer and 3 units does not get even close to the massive computational capacity of the human brain. Even if you consider a small subsection of the brain, and design a very large neural network with dozens of layers and units, the brain still has the advantage in most cases. Of course, this alone probably does not account for the entire gap between humans and neural networks but is a point to consider. A second argument refers to the massive <strong>past training experience</strong> accumulated by humans. Neural networks start from scratch every single time. Humans do not reset their storage memories and skills before attempting to learn something new. On the contrary, humans learn and reuse past learning experience across domains continuously. A third argument is related to the <strong>richness of the training data</strong> experienced by humans. Humans not only rely on past learning experiences but also on more <em>complex and multidimensional training data</em>. Humans integrate signals from all senses (visual, auditory, tactile, etc.) when learning which most likely speeds up the process. In any case, this is still a major issue and a hot topic of research.</p>
 
 </div>
@@ -2621,7 +2531,7 @@ During handling of the above exception, another exception occurred:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Multilayer-perceptrons-are-&quot;fragile&quot;">Multilayer perceptrons are "fragile"<a class="anchor-link" href="#Multilayer-perceptrons-are-&quot;fragile&quot;"> </a></h3>
+<h3 id="Multilayer-Perceptrons-are-&quot;fragile&quot;">Multilayer Perceptrons are "fragile"<a class="anchor-link" href="#Multilayer-Perceptrons-are-&quot;fragile&quot;"> </a></h3>
 </div>
 </div>
 </div>
@@ -2631,7 +2541,7 @@ During handling of the above exception, another exception occurred:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A second notorious limitation is how <strong>brittle</strong> multilayer perceptrons are to <strong>architectural decisions</strong>. An extra layer, a +0.001 in the learning rate, random uniform weight instead for random normal weights, and or even a different random seed can turn perfectly a functional neural network into a useless one. This is partially related to the fact we are trying to solve a nonconvex optimization problem. Gradient descent has no way to find the actual global minima in the error surface. You just can hope it will find a good enough local minima for your problem. All of this force neural network researchers to <strong>search over enormous combinatorial spaces of "hyperparameters"</strong> (i.e., like the learning rate, number layers, etc. Anything but the network weights and biases). In a way, you have to embrace the fact that perfect solutions are rarely found unless you are dealing with simple problems with known solutions like the XOR. Surprisingly, it is often the case that well designed neural networks are able to learn "good enough" solutions for a wide variety of problems. Creating more robust neural networks architectures is another present challenge and hot research topic.</p>
+<p>A second notorious limitation is how sensitive Multilayer Perceptrons are to <strong>architectural decisions</strong>. An extra layer, a +0.001 in the learning rate, random uniform weight instead for random normal weights, and or even a different random seed can turn perfectly a functional neural network into a useless one. This is partially related to the fact we are trying to solve a nonconvex optimization problem. Gradient descent has no way to find the actual global minima in the error surface. You just can hope it will find a good enough local minima for your problem. All of this force neural network researchers to <strong>search over enormous combinatorial spaces of "hyperparameters"</strong> (i.e., like the learning rate, number layers, etc. Anything but the network weights and biases). In a way, you have to embrace the fact that perfect solutions are rarely found unless you are dealing with simple problems with known solutions like the XOR. Surprisingly, it is often the case that well designed neural networks are able to learn "good enough" solutions for a wide variety of problems. Creating more robust neural networks architectures is another present challenge and hot research topic.</p>
 
 </div>
 </div>
@@ -2673,9 +2583,9 @@ During handling of the above exception, another exception occurred:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The introduction of multilayer perceptrons trained with backpropagation was a major breakthrough in cognitive science and artificial intelligence in the '80s. It brought back to life a line of research that many thought dead for a while. The key for its success was its ability to overcome one of the major criticism from the previous decade: <strong>its inability to solve problems that required non-linear solutions</strong>.</p>
+<p>The introduction of Multilayer Perceptrons trained with backpropagation was a major breakthrough in cognitive science and artificial intelligence in the '80s. It brought back to life a line of research that many thought dead for a while. The key for its success was its ability to overcome one of the major criticism from the previous decade: <strong>its inability to solve problems that required non-linear solutions</strong>.</p>
 <p>From a cognitive science perspective, the real question is whether such advance says something meaningful about the <strong>plausibility of neural networks as models of cognition</strong>. That is a tough question. If you are in the "neural network team" of course you'd think it does. If you are more skeptic you'd rapidly point out to the many weaknesses and unrealistic assumptions on which neural networks depend on.</p>
-<p>Maybe the best way of thinking about this type of advances in neural networks models of cognition is as another piece of a very complicated puzzle. The "puzzle" here is a <strong>working hypothesis</strong>: you are committed to the idea that the puzzle of cognition looks like a neural network when assembled, and your mission is to figure out all the pieces and putting them together. You may be wrong, maybe the puzzle at the end looks like something different, and you'll be proven wrong. Yet, at least in this sense, multilayer perceptrons were a crucial step forward in the neural network research agenda.</p>
+<p>Maybe the best way of thinking about this type of advances in neural networks models of cognition is as another piece of a very complicated puzzle. The "puzzle" here is a <strong>working hypothesis</strong>: you are committed to the idea that the puzzle of cognition looks like a neural network when assembled, and your mission is to figure out all the pieces and putting them together. You may be wrong, maybe the puzzle at the end looks like something different, and you'll be proven wrong. Yet, at least in this sense, Multilayer Perceptrons were a crucial step forward in the neural network research agenda.</p>
 
 </div>
 </div>
@@ -2696,12 +2606,16 @@ During handling of the above exception, another exception occurred:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). Deep Feedforward Networks. In Deep Learning. MIT Press. <a href="https://www.deeplearningbook.org/contents/mlp.html">https://www.deeplearningbook.org/contents/mlp.html</a></p>
-<p>Kelley, H. J. (1960). Gradient theory of optimal flight paths. Ars Journal, 30(10), 947–954.</p>
-<p>Bryson, A. E. (1961). A gradient method for optimizing multi-stage allocation processes. Proc. Harvard Univ. Symposium on Digital Computers and Their Applications, 72.</p>
-<p>Rumelhart, D. E., Hinton, G. E., &amp; Williams, R. J. (1986). Learning Internal Representations by Error Propagation. In Parallel Distributed Processing: Explorations in the Microestructure of Cognition (Vol. 1). MIT Press.</p>
-<p>Rumelhart, D. E., Hinton, G. E., &amp; Williams, R. J. (1986). Learning representations by back-propagating errors. Nature, 323(6088), 533–536.</p>
-<p>Werbos, P. J. (1994). The roots of backpropagation: From ordered derivatives to neural networks and political forecasting (Vol. 1). John Wiley &amp; Sons.</p>
+<ul>
+<li>Anderson, J. A., &amp; Rosenfeld, E. (2000a). In Talking nets: An oral history of neural networks. MIT Press.</li>
+<li>Anderson, J. A., &amp; Rosenfeld, E. (2000b). 12. David E. Rumelhart. In Talking nets: An oral history of neural networks. MIT Press.</li>
+<li>Anderson, J. A., &amp; Rosenfeld, E. (2000c). 16. Geoffrey E. Hinton. In Talking nets: An oral history of neural networks. MIT Press.</li>
+<li>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). Deep Feedforward Networks. In Deep Learning. MIT Press. <a href="https://www.deeplearningbook.org/contents/mlp.html">https://www.deeplearningbook.org/contents/mlp.html</a></li>
+<li>Jain, P., &amp; Kar, P. (2017). Non-convex optimization for machine learning. Foundations and Trends® in Machine Learning, 10(3–4), 142–336.</li>
+<li>McClelland, J. L., Rumelhart, D. E., &amp; PDP Research Group. (1986). Parallel distributed processing. Explorations in the Microstructure of Cognition, Vol. 1-2, 216–271.</li>
+<li>Rumelhart, D. E., Hinton, G. E., &amp; Williams, R. J. (1986). Learning Internal Representations by Error Propagation. In Parallel Distributed Processing: Explorations in the Microestructure of Cognition (Vol. 1). MIT Press.</li>
+<li>Rumelhart, D. E., Hinton, G. E., &amp; Williams, R. J. (1986). Learning representations by back-propagating errors. Nature, 323(6088), 533–536.</li>
+</ul>
 
 </div>
 </div>

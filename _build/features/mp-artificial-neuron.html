@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /features/perceptron.html
 suffix: .ipynb
-search: neuron inputs threshold mcculloch pitts function weights model table step yes neurons sum output vector movie not turing neural artificial excitatory activation value only behavior fire watch cell inhibitory compute truth l jackson tarantino need information same biological must input fires logical where since samuel quentin both matrix main computation machines mathematical tape figure center functions org cognition firing boolean binary based networks decision elements machine models en wikipedia wiki logic its synaptic signals weighted t e positive dot product incoming x array least learning problems turings modern science head instructions repeat shows centerfigure br style line height px src
+search: neuron inputs mcculloch pitts threshold function weights model table step yes neurons sum output vector movie not turing neural artificial excitatory activation value only behavior fire l watch cell inhibitory compute truth jackson tarantino need information same biological must input fires logical where since samuel quentin both matrix main computation machines mathematical tape figure center functions org cognition firing boolean binary based e networks decision elements machine models en wikipedia wiki logic its synaptic signals weighted t positive dot product incoming x array least m learning problems turings modern science head instructions repeat shows centerfigure br style line height px
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -61,7 +61,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Alan Turing's formalization of computation as <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines</a> provided the theoretical and mathematical foundations for modern computer science<a href="#fn1"><sup>1</sup></a>. Turing Machines are an abstraction of a general computation device. Turing (1937) described these machines as composed by an "infinite tape" made of "cells" (divided into squares), a "tape head", and a table with a finite set of instructions. Each cell contained a symbol, either a 0 or a 1, serving as information storage. The tape head can move along the tape, one cell at the time, to read the cell information. Then, according to a table of instructions at that state and the cell information, the tape head can erase information, write information, or do nothing, to then move to the next cell at the left or the right. In the next cell, the tape head would again do something according to the table of instructions and the cell information, to then repeat the process until the last instruction in the table of instructions. Figure 1 shows a representation of a Turing machine.</p>
+<p>Alan Turing's formalization of computation as <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines</a> provided the theoretical and mathematical foundations for modern computer science<a href="#fn1"><sup>1</sup></a>. Turing Machines are an abstraction of a general computation device. Turing (1937) described these machines as composed by an "infinite tape" made of "cells" (divided into squares), a "tape head", and a table with a finite set of instructions. Each cell contained a symbol, either a 0 or a 1, serving as information storage. The tape head can move along the tape, one cell at the time, to read the cell information. Then, according to a table of instructions at that state and the cell information, the tape head can erase information, write information, or do nothing, to then move to the next cell at the left or the right. In the next cell, the tape head would again do something according to the table of instructions and the cell information, to then repeat the process until the last instruction in the table of instructions. <strong>Figure 1</strong> shows a representation of a Turing machine.</p>
 
 </div>
 </div>
@@ -86,14 +86,14 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The particularities of Turing's description of Turing Machines are not relevant. You can envision a different way to implement the same general computing device. Indeed, alternative models of computation exist, such as "lambda calculus" and "cellular automata" (Fernández, 2009). The crucial part of Turing's proposal was the articulation of a machine capable to implement <em>any computable program</em>. The <em>computable</em> part of the last phrase is important because as Turing demonstrated, there are functions that can not be computed, like the <a href="https://en.wikipedia.org/wiki/Entscheidungsproblem"><em>Entscheidungsproblem</em></a> (a famous problem in mathematics formulated by <a href="https://en.wikipedia.org/wiki/David_Hilbert">David Hilbert</a> in 1928), one of the problems that motivated Turing's work in the first place.</p>
-<p>The advances in computability theory inspired a new generation of researchers to develop computational models in the study of cognition. Among the pioneers were <a href="https://en.wikipedia.org/wiki/Warren_McCulloch">Warren McCulloch</a> and <a href="https://en.wikipedia.org/wiki/Walter_Pitts">Walter Pitts</a>, who in 1943 proposed that biological neurons can be described as computational devices. In a way, this is another iteration to the problem of describing a general-purpose computation device. This time, inspired by how biological neurons work, and with an architecture significantly different than Turing Machines.</p>
-<p>The heart of the McCulloch and Pitts idea is that given the <em>all-or-none</em> character of neural activity, the behavior of the nervous system can be described by means of <em>propositional logic</em>. To understand this, let's examine that main components of biological neurons:</p>
+<p>The advances in computability theory inspired a new generation of researchers to develop computational models in the study of cognition. Among the pioneers were <a href="https://en.wikipedia.org/wiki/Warren_McCulloch">Warren McCulloch</a> and <a href="https://en.wikipedia.org/wiki/Walter_Pitts">Walter Pitts</a>, who in 1943 proposed that biological neurons can be described as computational devices (McCulloch &amp; Pitts, 1943). In a way, this is another iteration to the problem of describing a general-purpose computation device. This time, inspired by how biological neurons work, and with an architecture significantly different than Turing Machines.</p>
+<p>The heart of the McCulloch and Pitts idea is that given the <em>all-or-none</em> character of neural activity, the behavior of the nervous system can be described by means of <em>propositional logic</em>. To understand this, let's examine that main components of biological neurons (Purves et al., 2008):</p>
 <ol>
 <li>the <strong>cell body</strong> containing the nucleus and metabolic machinery</li>
 <li>an <strong>axon</strong> that transmit information via its synaptic terminals, and </li>
 <li>the <strong>dendrites</strong> that receive inputs from other neurons via synapses. </li>
 </ol>
-<p><strong>Figure 2</strong> shows an abstract scheme of the main components of two neurons and their synapses.</p>
+<p><strong>Figure 2</strong> shows an scheme of the main components of two neurons and their synapses.</p>
 
 </div>
 </div>
@@ -104,7 +104,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><span id="fn1"> *Footnote* 1: a detalied examination of the Turin Machine is beyond the scope of this tutorial. For an extended explanation of Turing Machines see https://plato.stanford.edu/entries/turing-machine/#DefiTuriMach </span></p>
+<p><span id="fn1"> *Footnote* 1: a detalied examination of the Turin Machine is beyond the scope of this tutorial. For an extended explanation of Turing Machines see [here](https://plato.stanford.edu/entries/turing-machine/#DefiTuriMach)  </span></p>
 
 </div>
 </div>
@@ -197,7 +197,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Where  $I_1, I_2,..., I_N$ are binary input values  $\in\{0,1\}$ ;  $W_1, W_2,..., W_N$ are weights associated with each input $\in\{-1,1\}$ ; $Sum$ is the weighted sum of inputs; and $T$ is a predefined threshold value for the neuron activation (i.e., <em>firing</em>). <strong>Figure 3</strong> shows a graphical representation of the McCulloch-Pitts artificial neuron.</p>
+<p>Where  $I_1, I_2,..., I_N$ are binary input values  $\in\{0,1\}$ ;  $w_1, w_2,..., w_n$ are weights associated with each input $\in\{-1,1\}$ ; $Sum$ is the weighted sum of inputs; and $T$ is a predefined threshold value for the neuron activation (i.e., <em>firing</em>). <strong>Figure 3</strong> shows a graphical representation of the McCulloch-Pitts artificial neuron.</p>
 
 </div>
 </div>
@@ -221,7 +221,7 @@ $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>An input is considered <em>excitatory</em> when its contribution to the weighted sum is positive, for instance $I_1*W_1 = 1 * 1 = 1$; whereas an input is considered <em>inhibitory</em> when its contribution to the weighted sum is negative, for instance $I_1*W_1 = 1 * -1 = -1$. If the value of $Sum$ is $\geq$ $T$, the neuron fires, otherwise, it does not. <strong>Figure 4</strong> shows a graphical representation of the threshold function.</p>
+<p>An input is considered <em>excitatory</em> when its contribution to the weighted sum is positive, for instance $I_1*w_1 = 1 * 1 = 1$; whereas an input is considered <em>inhibitory</em> when its contribution to the weighted sum is negative, for instance $I_1*w_1 = 1 * -1 = -1$. If the value of $Sum$ is $\geq$ $T$, the neuron fires, otherwise, it does not. <strong>Figure 4</strong> shows a graphical representation of the threshold function.</p>
 
 </div>
 </div>
@@ -1483,6 +1483,7 @@ Activation: 0
 <li>Fausett, L. (1994). When Neural Networks Began: The McCulloch-Pitts Neuron. In Fundamentals of neural networks: Architectures, algorithms, and applications (pp. 26–37). Prentice-Hall, Inc.</li>
 <li>Fernández, M. (2009). Models of Computation: An Introduction to Computability Theory. Springer Science &amp; Business Media.</li>
 <li>McCulloch, W. S., &amp; Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. The bulletin of mathematical biophysics, 5(4), 115-133.</li>
+<li>Purves, D., Cabeza, R., Huettel, S. A., LaBar, K. S., Platt, M. L., Woldorff, M. G., &amp; Brannon, E. M. (2008). Cognitive neuroscience. Sunderland: Sinauer Associates, Inc.</li>
 <li>Rojas, R. (2013). Threshold Logic. In Neural networks: A systematic introduction (pp. 29–52). Springer Science &amp; Business Media.</li>
 <li>Turing, A. M. (1937). On computable numbers, with an application to the Entscheidungsproblem. Proceedings of the London Mathematical Society, 2(1), 230–265.</li>
 </ul>
