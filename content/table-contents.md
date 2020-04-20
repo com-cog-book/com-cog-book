@@ -1,7 +1,7 @@
 # Table of Contents
 
 1. Introduction to Computational Models of Cognition
-2. Roadmap to Neural Network Models of Cognition (in progress)
+2. Roadmap to Neural Network Models of Cognition
 3. The McCulloch-Pitts Artificial Neuron (McCulloch & Pitts, 1943)
 4. The Perceptron (Rossenblat, 1958) ​
 5. The Adaline - Adaptive Linear Neuron (Widrow & Hoff, 1959)

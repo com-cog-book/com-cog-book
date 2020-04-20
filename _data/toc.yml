@@ -24,6 +24,9 @@
 
 - url: /table-contents
   not_numbered: true
+  
+- url: /about-author
+  not_numbered: true
 
 - divider: true
 
@@ -32,8 +35,8 @@
 - url: /features/intro-com-mod-cog
   not_numbered: true
 
-#- url: /features/roadmap-nn-mod-cog
-#  not_numbered: true
+- url: /features/roadmap-nn-mod-cog
+  not_numbered: true
 
 - url: /features/mp-artificial-neuron
   not_numbered: true
